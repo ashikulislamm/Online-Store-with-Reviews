@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&family=Raleway&family=Rubik&display=swap");
+button,
+button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+/*Variables*/
+:root {
+  /*Font Familu*/
+  --balo: "Baloo Thambi 2", cursive;
+  --raleway: "Raleway", cursive;
+  --rubik: "Rubik", cursive;
+
+  /*Colors*/
+  --primary: #003859;
+  --secondary: #00a5c4;
+  --yellow: #ffd289;
+}
+/*Common CSS*/
+.font-baloo{
+    font-family: var(--balo);
+}
+.font-rale{
+    font-family: var(--raleway);
+}
+.font-rubik{
+    font-family: var(--rubik);
+}
+
+.font-12{
+    font-size: 12px;
+}
+.font-14{
+    font-size: 14px;
+}
+.font-16{
+    font-size: 16px;
+}
+.font-20{
+    font-size: 20px;
+}
+/*header*/
+#header{
+    width: auto;
+}
+.login{
+    color: black;
+    text-decoration: none;
+    transition: 0.4s;
+    font-weight: 600;
+}
+.login:hover{
+    color: var(--secondary);
+}
