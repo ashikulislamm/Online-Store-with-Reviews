@@ -28,6 +28,8 @@ use online_store_with_review;
 create table orders(
     order_id int not null primary key auto_increment ,
     amount int ,
+    users_id int ,
+    foreign key(users_id) references user(user_id),
     order_date date,
     order_status varchar(50),
     product_id int not null,
@@ -36,9 +38,9 @@ create table orders(
 );
 
 use online_store_with_review;
-insert into orders(amount,order_date,order_status,product_id,payment_status) values(5,'2023-12-1',"In warehouse",2,"paid");
-insert into orders(amount,order_date,order_status,product_id,payment_status) values(15,'2023-11-3',"Dilevered",2,"paid");
-insert into orders(amount,order_date,order_status,product_id,payment_status) values(19,'2023-11-23',"Handed over to deilvery man",2,"unpaid");
+insert into orders(amount,users_id,order_date,order_status,product_id,payment_status) values(5,1,'2023-12-1',"In warehouse",2,"paid");
+insert into orders(amount,users_id,order_date,order_status,product_id,payment_status) values(15,2,'2023-11-3',"Dilevered",2,"paid");
+insert into orders(amount,users_id,order_date,order_status,product_id,payment_status) values(19,3,'2023-11-23',"Handed over to deilvery man",2,"unpaid");
 
 use online_store_with_review;
 select * from orders;
