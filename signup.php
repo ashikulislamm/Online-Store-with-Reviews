@@ -23,26 +23,61 @@
     <?php include 'nav.php'; ?>
 
     <div class="formbox" id="login">
-        <form action="" class="login__form">
+    <?php
+    include "config.php";
+
+    $username = "";
+    $email = "";
+    $password = "";
+    $address = "";
+    $active_order = 0;
+
+    if (isset($_POST['signup'])){
+        $username = $_POST['Name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $address = $_POST['Address'];
+
+        // verifying unique email
+        $verify_query = mysqli_query($con, "SELECT email FROM user WHERE email = '$email'");
+
+        if(mysqli_num_rows($verify_query) != 0){
+            echo "<div class='message'>
+            <p>This Email is used by another user! </p><br>
+            <a href='signup.php' class='nested-button-link'><button class='nested-button'>Back</button></a>
+            </div> <br>";
+        } else {
+            mysqli_query($con, "INSERT INTO user(user_name, email, user_password, user_address, active_orders) VALUES ('$username', '$email', '$password', '$address', '$active_order')") or die("Error Occurred");
+           echo "<div class='message'>
+            <p>Welcome to our Store</p><br>
+            <a href='login.php' class='nested-button-link'><button class='nested-button'>Back</button></a>
+            </div> <br>";
+        }
+    } else {
+        
+    
+?>
+
+        <form action="" class="login__form" method="post">
             <h2 class="login__title">SIGNUP</h2>
 
             <div class="login__group">
                 <div>
                     <label for="Name" class="login__label">Name</label>
-                    <input type="text" placeholder="Write your name" id="fname" class="login__input" />
+                    <input type="text" placeholder="Write your name" id="fname" class="login__input" name="Name" required/>
                 </div>
                 <div>
-                    <label for="Age" class="login__label">Number</label>
-                    <input type="tel" placeholder="Write your phone number" id="phone" class="login__input" />
+                    <label for="Address" class="login__label">Address</label>
+                    <input type="text" placeholder="Write your Address" id="phone" class="login__input" name="Address" required/>
                 </div>
                 <div>
                     <label for="email" class="login__label">Email</label>
-                    <input type="email" placeholder="Write your email" id="email" class="login__input" />
+                    <input type="email" placeholder="Write your email" id="email" class="login__input" name="email" required/>
                 </div>
 
                 <div>
                     <label for="password" class="login__label">Password</label>
-                    <input type="password" placeholder="Enter your password" id="password" class="login__input" />
+                    <input type="password" placeholder="Enter your password" id="password" class="login__input"  name="password" required/>
                 </div>
             </div>
 
@@ -50,9 +85,10 @@
                 <p class="login__signup">
                     Already have an account? <a href="/login.php">LOGIN</a>
                 </p>
-                <button type="submit" class="login__button">Sign Up</button>
+                <button type="submit" class="login__button" name="signup">Sign Up</button>
             </div>
         </form>
+        <?php } ?>
     </div>
 
     <!--Footer Section-->
@@ -64,3 +100,5 @@
 </body>
 
 </html>
+
+

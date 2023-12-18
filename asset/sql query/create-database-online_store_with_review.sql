@@ -27,7 +27,7 @@ select * from products;
 use online_store_with_review;
 create table orders(
     order_id int not null primary key auto_increment ,
-    amount int ,
+    total_amount int ,
     users_id int ,
     foreign key(users_id) references user(user_id),
     order_date date,
@@ -38,9 +38,9 @@ create table orders(
 );
 
 use online_store_with_review;
-insert into orders(amount,users_id,order_date,order_status,product_id,payment_status) values(5,1,'2023-12-1',"In warehouse",2,"paid");
-insert into orders(amount,users_id,order_date,order_status,product_id,payment_status) values(15,2,'2023-11-3',"Dilevered",2,"paid");
-insert into orders(amount,users_id,order_date,order_status,product_id,payment_status) values(19,3,'2023-11-23',"Handed over to deilvery man",2,"unpaid");
+insert into orders(total_amount,users_id,order_date,order_status,product_id,payment_status) values(15000,1,'2023-12-1',"In warehouse",2,"paid");
+insert into orders(total_amount,users_id,order_date,order_status,product_id,payment_status) values(12534,2,'2023-11-3',"Dilevered",2,"paid");
+insert into orders(total_amount,users_id,order_date,order_status,product_id,payment_status) values(19414,3,'2023-11-23',"Handed over to deilvery man",2,"unpaid");
 
 use online_store_with_review;
 select * from orders;
@@ -52,7 +52,6 @@ use online_store_with_review;
 create table user(
     user_id int not null auto_increment primary key,
     user_name varchar(50),
-    age int check(age>14),
     email varchar(50),
     user_password varchar(50),
     user_address varchar(200),
@@ -61,9 +60,9 @@ create table user(
 
 
 use online_store_with_review;
-insert into user(user_name,age,email,user_password,user_address,active_orders) values("Ashik",22,"ashik@gmail.com","19102joa","Khilgaon,road-2,Building no-12,Dhaka",3);
-insert into user (user_name,age,email,user_password,user_address,active_orders)values("Dona",22,"dona@gmail.com","helloworld","Baridhara, road-11,House-22,Dhaka",2);
-insert into user (user_name,age,email,user_password,user_address,active_orders)values("Zenun",23,"zenun@gmail.com","GGEZ","Shyamoli,road-2,Building no-13",1);
+insert into user(user_name,email,user_password,user_address,active_orders) values("Ashik","ashik@gmail.com","19102joa","Khilgaon,road-2,Building no-12,Dhaka",3);
+insert into user (user_name,email,user_password,user_address,active_orders)values("Dona","dona@gmail.com","helloworld","Baridhara, road-11,House-22,Dhaka",2);
+insert into user (user_name,email,user_password,user_address,active_orders)values("Zenun","zenun@gmail.com","GGEZ","Shyamoli,road-2,Building no-13",1);
 
 
 use online_store_with_review;
@@ -108,3 +107,43 @@ insert into wishlist(user_id,products_id) values(1,2);
 
 use online_store_with_review;
 select * from wishlist;
+
+
+
+use online_store_with_review;
+create table review(
+    review_id int not null auto_increment primary key,
+    product_id int not null,
+    foreign key (product_id) references products(product_id),
+     users_id int ,
+    foreign key(users_id) references user(user_id),
+    descript varchar(400)
+
+);
+
+use online_store_with_review;
+insert into review(product_id,users_id,descript) values(2,3,"nice product but less available");
+
+use online_store_with_review;
+select* from review;
+
+
+
+use online_store_with_review;
+create table order_details(
+
+    order_id int not null ,
+    foreign key(order_id) references orders(order_id),
+    product_id int not null,
+    foreign key(product_id) references products(product_id),
+    quantity int
+    
+);
+
+use online_store_with_review;
+insert into order_details(order_id,product_id,quantity) values(1,2,2);
+
+
+use online_store_with_review;
+select * from order_details;
+
