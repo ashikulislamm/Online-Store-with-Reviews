@@ -27,6 +27,14 @@ searchClose.addEventListener("click", () => {
   search.classList.remove("show-search");
 });
 
+var loginmenu = document.getElementById('sub-menu-wrap'),
+      loginBtn = document.getElementById('login-btn')
+
+/* Login show */
+loginBtn.addEventListener('click', () =>{
+  loginmenu.classList.toggle('open')
+});
+
 var subDiv = document.getElementById("subdiv");
 var subClose = document.getElementById("sub_close");
 var subBtn = document.getElementById("footer__btn");

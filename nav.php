@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php session_start(); ?>
 <html lang="en">
 
 <head>
@@ -27,7 +27,7 @@
         <nav class="nav container">
             <a href="/index.php" class="nav__logo">Online Store</a>
 
-            <div class="nav__menu" id="nav-menu">
+            <div class="nav__menu" id="nav-menu" style="margin-top: 15px;">
                 <ul class="nav__list">
                     <li class="nav__item">
                         <a href="#" class="nav__link">On Sale</a>
@@ -61,7 +61,53 @@
                 <i class="fa-solid fa-magnifying-glass nav__search" id="search-btn"></i>
 
                 <!-- Login button -->
-                <a href="./login.php"><i class="fa-regular fa-user nav__login" id="login-btn"></i></a>
+                <?php
+                include 'config.php';
+                if (isset($_SESSION['id'])) {
+                    $sql = "SELECT user_name FROM user WHERE user_id='$_SESSION[id]'";
+                    $query = mysqli_query($con, $sql);
+                    $row = mysqli_fetch_array($query);
+                    echo '<a class="acc" id="login-btn" style="display: flex; justify-content:space-between;margin-top:15px; cursor:pointer;">
+                        <i class="fa-regular fa-user nav__login"></i>
+                        <p class="myacc">Hello , ' . $row["user_name"] . '</p>
+                    </a>
+                    <div class="sub-menu-wrap" id="sub-menu-wrap">
+                        <div class="sub-menu">
+                            <div class="user">
+                                <a href="profile.php">
+                                    <i class="fa-solid fa-user"></i>
+                                    <h4>My Account</h4>
+                                </a>
+                                <a href="/logout.php" style="margin-top: 10px;">
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                    <h4>Logout</h4>
+                                </a>
+                            </div>
+                        </div>
+                    </div>';
+                } else {
+                    echo '<a class="acc" id="login-btn" style="display: flex; justify-content:space-between;margin-top:15px; cursor:pointer;">
+                        <i class="fa-regular fa-user nav__login"></i>
+                        <p class="myacc">My Account</p>
+                        
+                    </a>
+                    <div class="sub-menu-wrap" id="sub-menu-wrap">
+                        <div class="sub-menu">
+                            <div class="user">
+                                <a href="login.php">
+                                    <i class="fa-solid fa-right-to-bracket"></i>
+                                    <h4>Login</h4>
+                                </a>
+                                <a href="/signup.php" style="margin-top: 10px;">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                    <h4>Signup</h4>
+                                </a>
+                            </div>
+                        </div>
+                    </div>';
+                }
+                ?>
+
 
                 <!-- Toggle button -->
                 <div class="nav__toggle" id="nav-toggle">
@@ -74,7 +120,7 @@
         <div class="search" id="search">
             <form action="" class="search__form">
                 <i class="fa-solid fa-magnifying-glass search__icon"></i>
-                <input type="search" placeholder="What are you looking for?" class="search__input" />
+                <input type="search" placeholder="What are you looking for?" class="search__input" /><button type="reset">&times;</button>
             </form>
 
             <i class="fa-solid fa-x search__close" id="search-close"></i>

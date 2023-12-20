@@ -360,6 +360,54 @@ td {
   transform: translateY(0);
 }*/
 
+/*Submenu*/
+.sub-menu-wrap{
+  position: absolute;
+  top:100%;
+  right: 10%;
+  width: 180px;
+  visibility: hidden;
+}
+.open{
+  visibility: visible;
+}
+.sub-menu{
+  background: var(--body-color);
+  padding: 20px;
+  box-shadow: 0 2px 16px hsla(230, 75%, 32%, .15);
+}
+.user a{
+  display: flex;
+  color: black;
+  justify-content: flex-start;
+}
+.user a i{
+  font-size: 15px !important;
+}
+.user i{
+  margin-top: 4px;
+}
+.user h4{
+  font-size: 16px;
+}
+.user a:hover{
+  transition: 0.4s;
+  color: var(--first-color);
+}
+.user h4{
+  font-weight: 500;
+}
+.user i{
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.myacc{
+  margin-left: 10px;
+}
+.myacc:hover{
+  color: var(--first-color);
+}
+
 /*=============== BREAKPOINTS ===============*/
 /* For medium devices */
 @media screen and (min-width: 576px) {

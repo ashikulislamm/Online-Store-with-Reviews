@@ -1,15 +1,4 @@
-<?php
-  session_start();
-  include 'config.php';
-  if(isset($_SESSION['valid'])){
-    header("Location: index.php");
-  }
 
-?>
-
-
-
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -37,11 +26,9 @@
 
   <?php include 'nav.php';?>
 
-
   <!--Main Section-->
 
   <main class="container">
-    
   </main>
 
   <!-------Footer Section---------->
