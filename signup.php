@@ -23,82 +23,79 @@
     <?php include 'nav.php'; ?>
 
     <div class="formbox" id="login">
-    <?php
-    include "config.php";
+        <?php
+        include "config.php";
 
-    $username = "";
-    $email = "";
-    $password = "";
-    $address = "";
-    $active_order = 0;
+        $username = "";
+        $phoneNo = "";
+        $email = "";
+        $password = "";
+        $address = "";
+        $active_order = 0;
 
-    if (isset($_POST['signup'])){
-        $username = $_POST['Name'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $address = $_POST['Address'];
+        if (isset($_POST['signup'])) {
+            $username = $_POST['Name'];
+            $phoneNo = $_POST['phone'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $address = $_POST['Address'];
 
-        // verifying unique email
-        $verify_query = mysqli_query($con, "SELECT email FROM user WHERE email = '$email'");
+            // verifying unique email
+            $verify_query = mysqli_query($con, "SELECT email FROM user WHERE email = '$email'");
 
-        if(mysqli_num_rows($verify_query) != 0){
-            echo "<div class='message'>
+            if (mysqli_num_rows($verify_query) != 0) {
+                echo "<div class='message'>
             <p>This Email is used by another user! </p><br>
             <a href='signup.php' class='nested-button-link'><button class='nested-button'>Back</button></a>
             </div> <br>";
-        } else {
-            mysqli_query($con, "INSERT INTO user(user_name, email, user_password, user_address, active_orders) VALUES ('$username', '$email', '$password', '$address', '$active_order')") or die("Error Occurred");
-           echo "<div class='message'>
+            } else {
+                mysqli_query($con, "INSERT INTO user(user_name,user_number, email, user_password, user_address, active_orders) VALUES ('$username','$phoneNo', '$email', '$password', '$address', '$active_order')") or die("Error Occurred");
+                echo "<div class='message'>
             <p>Welcome to our Store</p><br>
             <a href='login.php' class='nested-button-link'><button class='nested-button'>Back</button></a>
             </div> <br>";
-        }
-    } else {
-        
-    
-?>
+            }
+        } else {
+        ?>
 
-        <form action="" class="login__form" method="post">
-            <h2 class="login__title">SIGNUP</h2>
+            <form action="" class="login__form" method="post">
+                <h2 class="login__title">SIGNUP</h2>
 
-            <div class="login__group">
-                <div>
-                    <label for="Name" class="login__label">Name</label>
-                    <input type="text" placeholder="Write your name" id="fname" class="login__input" name="Name" required/>
-                </div>
-                <div>
-                    <label for="Address" class="login__label">Address</label>
-                    <input type="text" placeholder="Write your Address" id="phone" class="login__input" name="Address" required/>
-                </div>
-                <div>
-                    <label for="email" class="login__label">Email</label>
-                    <input type="email" placeholder="Write your email" id="email" class="login__input" name="email" required/>
+                <div class="login__group">
+                    <div>
+                        <label for="Name" class="login__label">Name</label>
+                        <input type="text" placeholder="Write your name" id="fname" class="login__input" name="Name" required />
+                    </div>
+                    <div>
+                        <label for="phone" class="login__label">Phone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your telephone number" class="login__input" pattern="[0-9]{11}" required>
+                    </div>
+                    <div>
+                        <label for="Address" class="login__label">Address</label>
+                        <input type="text" placeholder="Write your Address" id="phone" class="login__input" name="Address" required />
+                    </div>
+                    <div>
+                        <label for="email" class="login__label">Email</label>
+                        <input type="email" placeholder="Write your email" id="email" class="login__input" name="email" required />
+                    </div>
+
+                    <div>
+                        <label for="password" class="login__label">Password</label>
+                        <input type="password" placeholder="Enter your password" id="password" class="login__input" name="password" required />
+                    </div>
                 </div>
 
                 <div>
-                    <label for="password" class="login__label">Password</label>
-                    <input type="password" placeholder="Enter your password" id="password" class="login__input"  name="password" required/>
+                    <p class="login__signup">
+                        Already have an account? <a href="/login.php">LOGIN</a>
+                    </p>
+                    <button type="submit" class="login__button" name="signup">Sign Up</button>
                 </div>
-            </div>
-
-            <div>
-                <p class="login__signup">
-                    Already have an account? <a href="/login.php">LOGIN</a>
-                </p>
-                <button type="submit" class="login__button" name="signup">Sign Up</button>
-            </div>
-        </form>
+            </form>
         <?php } ?>
     </div>
-
     <!--Footer Section-->
-
     <?php include 'footer.php'; ?>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    <script src="asset/js/main.js"></script>
 </body>
 
 </html>
-
-

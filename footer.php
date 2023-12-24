@@ -34,7 +34,7 @@
       color: #2f2f2f;
       background-color: hsl(230, 100%, 98%);
       border-top: 1px solid #e5e5e5;
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     .footer>* {
@@ -325,7 +325,7 @@
         <h3>Subscribe for Newsletter</h3>
         <p>Subscribe for latest offers and news</p>
         <div class="subform">
-          <input type="email" id="email" placeholder="Enter your email">
+          <input type="email" id="subsemail" placeholder="Enter your email">
         </div>
         <div class="subbtn">
           <button class="subscribe">Subscribe</button>
@@ -334,7 +334,7 @@
       <button type="button" class="sub_close" id="sub_close"><i class="fa-solid fa-xmark" id="sub_close"></i></button>
     </div>
   </div>
-  <script src="/asset/js/main.js"></script>
+  <script src="/asset/js/footer.js"></script>
 </body>
 
 </html>

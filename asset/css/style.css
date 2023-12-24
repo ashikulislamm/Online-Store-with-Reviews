@@ -104,18 +104,6 @@ td {
   position: relative;
   height: 100vh;
 }
-
-.main__bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: -1;
-}
-
 .search {
   position: fixed;
   left: 0;
@@ -151,14 +139,14 @@ td {
 
 /*=============== HEADER & NAV ===============*/
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   background-color: var(--body-color);
   box-shadow: 0 2px 16px hsla(230, 75%, 32%, 0.15);
   z-index: var(--z-fixed);
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .nav {
@@ -194,6 +182,80 @@ td {
 
 :is(.nav__logo, .nav__search, .nav__login, .nav__toggle, .nav__link):hover {
   color: var(--first-color);
+}
+
+/*------------Profile------------*/
+.profileDiv {
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+}
+.left{
+  width: 40%;
+}
+.user-profile {
+  background: var(--container-color);
+  height: 195px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 16px hsla(230, 75%, 32%, 0.25);
+
+}
+.profileBtns {
+  background: var(--container-color);
+  height: 195px;
+  box-shadow: 0 2px 16px hsla(230, 75%, 32%, 0.25);
+  text-align: center;
+  padding-top: 30px;
+  align-items: center;
+  justify-content: center;
+}
+.profileBtns ul{
+  padding-right: 2rem;
+}
+.profileBtns ul li{
+  color: black;
+  border: 1px solid var(--first-color);
+  cursor: pointer;
+  margin: 10px 0px;
+  padding: 5px;
+}
+
+.profileBtns ul li:hover{
+  background: var(--first-color);
+  color: white;
+  transition: 0.4s;
+}
+
+.profile-details {
+  background: var(--container-color);
+  box-shadow: 0 2px 16px hsla(230, 75%, 32%, 0.25);
+  height: auto;
+  width: 60%;
+  margin-left: 10px;
+}
+.user-profile{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.info{
+  padding-left: 25px;
+}
+.user-profile p{
+  font-size: 15px;
+  margin: 0;
+}
+.avatar{
+  margin-left: 25px;
+}
+.det{
+  text-align: center;
+  padding-top: 20px;
+  display: none;
+}
+.det.show{
+  display: block;
 }
 
 /* Navigation for mobile devices */
@@ -409,6 +471,31 @@ td {
 }
 
 /*=============== BREAKPOINTS ===============*/
+/*Profile Responsive*/
+@media screen and (max-width: 990px) {
+  .profile-details{
+    width: 100%;
+    margin-left: 0px;
+  }
+  .left{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .profileDiv{
+    flex-direction: column;
+  }
+  .acount-details {
+    margin-top: 20px;
+  }
+  .profileBtns{
+    height: auto;
+    padding-top: 15px;
+    padding-bottom: 10px;
+  }
+  .profileBtns ul li{
+    display: inline-block;
+  }
+}
 /* For medium devices */
 @media screen and (min-width: 576px) {
   .search,
@@ -468,8 +555,8 @@ td {
 
 .message{
   text-align: center;
-  background: hsl(230, 100%, 97%);
-  padding: 15px 0px;
+  background: var(--container-color);
+  padding-top: 50px;
   font-family: "Syne", sans-serif;
   border: 1px solid rgb(252, 252, 252);
   border-radius: 10px;
@@ -493,10 +580,10 @@ td {
 .nested-button {
   display: block;
   padding: 10px 20px;
-  background-color: #1856a7;
+  background-color: var(--first-color);
   color: white; 
   border: none; 
-  border-radius: 5px; 
+  border-radius: 20px; 
   cursor: pointer;
   transition: background-color 0.5s ease; 
 }

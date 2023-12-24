@@ -1,19 +1,19 @@
-var NAVMENU = document.getElementById("nav-menu"),
+const NavMenu = document.getElementById("nav-menu"),
   navToggle = document.getElementById("nav-toggle"),
   navClose = document.getElementById("nav-close");
 
 /* Menu show */
 navToggle.addEventListener("click", () => {
-  NAVMENU.classList.add("show-menu");
+  NavMenu.classList.add("show-menu");
 });
 
 /* Menu hidden */
 navClose.addEventListener("click", () => {
-  NAVMENU.classList.remove("show-menu");
+  NavMenu.classList.remove("show-menu");
 });
 
 /*=============== SEARCH ===============*/
-var search = document.getElementById("search"),
+const search = document.getElementById("search"),
   searchBtn = document.getElementById("search-btn"),
   searchClose = document.getElementById("search-close");
 
@@ -33,16 +33,4 @@ var loginmenu = document.getElementById('sub-menu-wrap'),
 /* Login show */
 loginBtn.addEventListener('click', () =>{
   loginmenu.classList.toggle('open')
-});
-
-var subDiv = document.getElementById("subdiv");
-var subClose = document.getElementById("sub_close");
-var subBtn = document.getElementById("footer__btn");
-
-subBtn.addEventListener("click" , function(){
-  subDiv.classList.add("show_sub");
-});
-
-subClose.addEventListener("click" , function(){
-  subDiv.classList.remove("show_sub");
 });
