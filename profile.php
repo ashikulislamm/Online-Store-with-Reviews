@@ -29,6 +29,10 @@
     if (isset($_SESSION['id'])) {
         $result = mysqli_query($con, "SELECT * FROM user WHERE user_id='$_SESSION[id]'") or die("Select Error");
         $row = mysqli_fetch_assoc($result);
+        $result2 = mysqli_query($con, "SELECT * FROM wishlist WHERE user_id='$_SESSION[id]'") or die("Select Error");
+        $row2 = mysqli_fetch_assoc($result2);
+        $result3 = mysqli_query($con, "SELECT * FROM products WHERE product_id='" . $row2['products_id'] . "'") or die("Select Error");
+        $row3 = mysqli_fetch_assoc($result3);
         echo '
             <main class="main">
         <div class="container">
@@ -85,18 +89,59 @@
             </form>
                     </div>
                     <div class="det" id="orders">This is Orders Section</div>
-                    <div class="det" id="wishlist">This is wishlist section</div>
+                    <div class="det" id="wishlist">
+                    <table>
+                    <tr>
+                    <th>products</th>
+                    <th>price</th>
+                    </tr>
+                    <tr>
+                    <td>
+                  
+                    ' . $row3['product_name'] . '
+                    </td>
+                    <td>
+                    ' . $row3['price'] . '
+
+                    </td>
+                    </tr>
+                    </table>
+                    
+                    
+                    
+                    </div>
                 </div>
             </div>
         </div>
-    </main>
-            ';
+    </main>';
+        //Code for updating data
+        if (isset($_POST['update'])) {
+            $user_email = null;
+            $username = $_POST['Name'];
+            $phoneNo = $_POST['phone'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $address = $_POST['Address'];
+            $user_email = $row['email'];
+            $verify_query1 = mysqli_query($con, "SELECT email FROM user WHERE email = '$email'");
+
+            if (mysqli_num_rows($verify_query1) < 1 || $user_email == $email) {
+                mysqli_query($con, "UPDATE user SET user_name ='$username', user_number='$phoneNo',email='$email',user_password='$password',user_address='$address' WHERE user_id='$_SESSION[id]'");
+                echo '<script>window.location="successful.php"</script>';
+                exit();
+            } else {
+                echo '<script>window.location="emailconfig.php"</script>';
+                exit();
+            }
+        }
     } else {
         echo "<div class='message'>
                 <h5>Please Login to view your profile </h5><br>
                 <a href='login.php' class='nested-button-link'><button class='nested-button'>Login</button></a>
                 </div> <br>";
     }
+
+
     ?>
     <?php include 'footer.php'; ?>
     <script src="/asset/js/profile.js"></script>

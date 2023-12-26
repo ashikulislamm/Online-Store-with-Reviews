@@ -38,13 +38,14 @@
             $_SESSION['id'] = null;
             if (is_array($row) && !empty($row)) {
                 $_SESSION['valid'] = true;
+                $_SESSION['user_email']=$row['email'];
                 $_SESSION['user_name'] = $row['user_name'];
                 $_SESSION['user_address'] = $row['user_address'];
                 $_SESSION['active_orders'] = $row['active_orders'];
                 $_SESSION['user_id'] = $row['user_id'];
             } else {
                 echo "<div class='message'>
-                <p>Wrong Username or password </p><br>
+                <p> Wrong Username or password </p><br>
                 <a href='login.php' class='nested-button-link'><button class='nested-button'>Back</button></a>
                 </div> <br>";
             }

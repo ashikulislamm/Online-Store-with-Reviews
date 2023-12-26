@@ -31,7 +31,7 @@ create table orders(
     foreign key(users_id) references user(user_id),
     receiver_name varchar(50),
     dil_address varchar(200),
-    receiver_phone int,
+    receiver_phone varchar(20),
     receiver_email varchar(50),
     order_date date,
     order_status varchar(50),
@@ -39,9 +39,9 @@ create table orders(
 );
 
 use online_store_with_review;
-insert into orders(amount,users_id,receiver_name,dil_address,receiver_phone,receiver_email,order_date,order_status,payment_status) values(5,1,"Ashik","khilgaon,Dhaka",0153812766,"ashik@gmail.com",'2023-12-1',"In warehouse","paid");
-insert into orders(amount,users_id,receiver_name,dil_address,receiver_phone,receiver_email,order_date,order_status,payment_status) values(5,3,"Zenun","khilgaon,Dhaka",01753812766,"zenun@gmail.com",'2023-12-1',"In warehouse","paid");
-insert into orders(amount,users_id,receiver_name,dil_address,receiver_phone,receiver_email,order_date,order_status,payment_status) values(5,2,"Dona","khilgaon,Dhaka",0183812766,"dona@gmail.com",'2023-12-1',"In warehouse","paid");
+insert into orders(amount,users_id,receiver_name,dil_address,receiver_phone,receiver_email,order_date,order_status,payment_status) values(5,1,"Ashik","khilgaon,Dhaka","0153812766","ashik@gmail.com",'2023-12-1',"In warehouse","paid");
+insert into orders(amount,users_id,receiver_name,dil_address,receiver_phone,receiver_email,order_date,order_status,payment_status) values(5,3,"Zenun","khilgaon,Dhaka","01753812766","zenun@gmail.com",'2023-12-1',"In warehouse","paid");
+insert into orders(amount,users_id,receiver_name,dil_address,receiver_phone,receiver_email,order_date,order_status,payment_status) values(5,2,"Dona","khilgaon,Dhaka","0183812766","dona@gmail.com",'2023-12-1',"In warehouse","paid");
 
 use online_store_with_review;
 select * from orders;
@@ -53,7 +53,7 @@ use online_store_with_review;
 create table user(
     user_id int not null auto_increment primary key,
     user_name varchar(50),
-    user_number int,
+    user_number varchar(20),
     email varchar(50),
     user_password varchar(50),
     user_address varchar(200),
@@ -62,9 +62,9 @@ create table user(
 
 
 use online_store_with_review;
-insert into user(user_name,user_number,email,user_password,user_address,active_orders) values("Ashik",01711623102,"ashik@gmail.com","19102joa","Khilgaon,road-2,Building no-12,Dhaka",3);
-insert into user (user_name,user_number,email,user_password,user_address,active_orders)values("Dona",01811332332,"dona@gmail.com","helloworld","Baridhara, road-11,House-22,Dhaka",2);
-insert into user (user_name,user_number,email,user_password,user_address,active_orders)values("Zenun",01538120375,"zenun@gmail.com","GGEZ","Shyamoli,road-2,Building no-13",1);
+insert into user(user_name,user_number,email,user_password,user_address,active_orders) values("Ashik","01711623102","ashik@gmail.com","19102joa","Khilgaon,road-2,Building no-12,Dhaka",3);
+insert into user (user_name,user_number,email,user_password,user_address,active_orders)values("Dona","01811332332","dona@gmail.com","helloworld","Baridhara, road-11,House-22,Dhaka",2);
+insert into user (user_name,user_number,email,user_password,user_address,active_orders)values("Zenun","01538120375","zenun@gmail.com","GGEZ","Shyamoli,road-2,Building no-13",1);
 
 
 use online_store_with_review;
