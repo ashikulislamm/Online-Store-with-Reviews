@@ -29,11 +29,96 @@
     if (isset($_SESSION['id'])) {
         $result = mysqli_query($con, "SELECT * FROM user WHERE user_id='$_SESSION[id]'") or die("Select Error");
         $row = mysqli_fetch_assoc($result);
-        $result2 = mysqli_query($con, "SELECT * FROM wishlist WHERE user_id='$_SESSION[id]'") or die("Select Error");
-        $row2 = mysqli_fetch_assoc($result2);
-        $result3 = mysqli_query($con, "SELECT * FROM products WHERE product_id='" . $row2['products_id'] . "'") or die("Select Error");
-        $row3 = mysqli_fetch_assoc($result3);
-        echo '
+        
+        $wishlist_result = mysqli_query($con, "SELECT * FROM wishlist WHERE user_id='$_SESSION[id]'");
+        if ($wishlist_result && mysqli_num_rows($wishlist_result) > 0) {
+            echo '
+            <main class="main">
+         <div class="container">
+            <h1 style="text-align: center; margin-bottom: 30px;">Welcome ,' . $row['user_name'] . '</h1>
+            <div class="profileDiv">
+                <div class="left">
+                    <div class="user-profile">
+                        <div class="avatar">
+                            <img src="/asset/images/user.png" alt="" width="100px">
+                        </div>
+                        <div class="info">
+                            <p><b>Name</b> : ' . $row['user_name'] . '</p>
+                            <p><b>Email</b> : ' . $row['email'] . '</p>
+                            <p><b>Number</b> : ' . $row['user_number'] . '</p>
+                            <p><b>Active Orders</b> : ' . $row['active_orders'] . '</p>
+                            <address><strong>Address</strong> : ' . $row['user_address'] . '</address>
+                        </div>
+                    </div>
+                    <div class="profileBtns">
+                        <ul class="btnList">
+                            <li id="accountBtn">Account</li>
+                            <li id="ordersBtn">Orders</li>
+                            <li id="wishlistBtn">Wishlist</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <div class="det" id="account">
+                    <form action="" class="login__form" method="post">
+                <h2 class="login__title">Update Information</h2>
+
+                <div class="login__group">
+                    <div>
+                        <input type="text" placeholder="Write your name" id="fname" class="login__input" name="Name" value="' . $row['user_name'] . '" />
+                    </div>
+                    <div>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your telephone number" class="login__input" value="' . $row['user_number'] . '" pattern="[0-9]{11}">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Write your Address" id="phone" class="login__input" value="' . $row['user_address'] . '" name="Address"/>
+                    </div>
+                    <div>
+                        <input type="email" placeholder="Write your email" id="email" class="login__input" value="' . $row['email'] . '" name="email"/>
+                    </div>
+
+                    <div>
+                        <input type="text" placeholder="Enter your password" id="password" class="login__input" value="' . $row['user_password'] . '"  name="password"/>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="login__button" name="update">Update</button>
+                </div>
+            </form>
+                    </div>
+                    <div class="det" id="orders">This is Orders Section</div>
+                    <div class="det" id="wishlist">
+                    <h3>Your Wishlist</h3>
+                    <table>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                        </tr>';
+                
+                        while ( $row2 = mysqli_fetch_assoc($wishlist_result)) {
+                           
+                            //$p_id = null;
+                            $p_id = $row2["products_id"];
+                            $product_result = mysqli_query($con, "SELECT * FROM products WHERE product_id='$p_id'");
+                            $product_row = mysqli_fetch_assoc($product_result);
+
+                            echo '
+                            <tr>
+                                <td>' . $product_row["product_name"] . '</td>
+                                <td>' . $product_row["price"] . '</td>
+                            </tr>';
+                        }
+                        echo '
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>';
+
+        } else {
+            echo '
             <main class="main">
         <div class="container">
             <h1 style="text-align: center; margin-bottom: 30px;">Welcome ,' . $row['user_name'] . '</h1>
@@ -90,30 +175,15 @@
                     </div>
                     <div class="det" id="orders">This is Orders Section</div>
                     <div class="det" id="wishlist">
-                    <table>
-                    <tr>
-                    <th>products</th>
-                    <th>price</th>
-                    </tr>
-                    <tr>
-                    <td>
-                  
-                    ' . $row3['product_name'] . '
-                    </td>
-                    <td>
-                    ' . $row3['price'] . '
-
-                    </td>
-                    </tr>
-                    </table>
-                    
-                    
-                    
+                    <h3>No products in your wishlist</h3>
                     </div>
                 </div>
             </div>
         </div>
     </main>';
+        }
+
+
         //Code for updating data
         if (isset($_POST['update'])) {
             $user_email = null;
