@@ -25,10 +25,11 @@
   <?php include 'nav.php'; ?>
 
   <!--Main Section-->
-
-  <main class="container">
+  
+  <main class="container my-1 pb-1">
+  <?php include 'product.php'; ?>
   </main>
-
+ 
   <!-------Footer Section---------->
 
   <?php include 'footer.php'; ?>

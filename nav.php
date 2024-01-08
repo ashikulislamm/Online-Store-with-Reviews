@@ -24,7 +24,7 @@
     <header class="header" id="header">
         <!------------------Navigation Bar----------------->
         <nav class="nav container">
-            <a href="/index.php" class="nav__logo"><img src="/asset/images/logo.png" width="220px" alt=""></a>
+            <a href="/index.php" class="nav__logo"><img src="asset/images/logo.png" width="220px" alt=""></a>
 
             <div class="nav__menu" id="nav-menu" style="margin-top: 15px;">
                 <ul class="nav__list">
