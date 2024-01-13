@@ -27,10 +27,27 @@ searchClose.addEventListener("click", () => {
   search.classList.remove("show-search");
 });
 
-var loginmenu = document.getElementById('sub-menu-wrap'),
-      loginBtn = document.getElementById('login-btn')
+/*=============== DROPDOWN JS ===============*/
+const showDropdown = (content, button) =>{
+  const dropdownContent = document.getElementById(content),
+        dropdownButton = document.getElementById(button)
 
-/* Login show */
-loginBtn.addEventListener('click', () =>{
-  loginmenu.classList.toggle('open')
+  dropdownButton.addEventListener('click', () =>{
+     // We add the show-dropdown class, so that the menu is displayed
+     dropdownContent.classList.toggle('show-dropdown')
+  })
+}
+showDropdown('dropdown-content','dropdown-button')
+
+/*=============== Cart ===============*/
+
+let iconCart = document.querySelector(".icon-cart");
+let closeCart = document.querySelector(".closee");
+let body = document.querySelector(".cartTab");
+
+iconCart.addEventListener("click", () => {
+  body.classList.add("showCart");
+});
+closeCart.addEventListener("click", () => {
+  body.classList.remove("showCart");
 });

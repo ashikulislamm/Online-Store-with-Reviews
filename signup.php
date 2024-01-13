@@ -72,7 +72,7 @@
                     </div>
                     <div>
                         <label for="Address" class="login__label">Address</label>
-                        <input type="text" placeholder="Write your Address" id="phone" class="login__input" name="Address" required />
+                        <input type="text" placeholder="Write your Address" id="address" class="login__input" name="Address" required />
                     </div>
                     <div>
                         <label for="email" class="login__label">Email</label>

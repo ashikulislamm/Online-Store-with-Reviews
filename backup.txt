@@ -1,0 +1,10 @@
+<div class="listProduct">
+    <div class="item" data-id="1">
+        <img src="/asset/images/img1.png" alt="">
+        <a href="">
+          <h2>LD00 Loudge Chair</h2>
+        </a>
+        <div class="price">$100</div>
+        <button class="addCart">Add to Cart</button>
+    </div>
+</div>
