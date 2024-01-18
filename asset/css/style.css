@@ -186,7 +186,7 @@ td {
 .nav__actions {
   display: flex;
   align-items: center;
-  column-gap: 1rem;
+  column-gap: 0.5rem;
 }
 
 .nav__search,
@@ -622,6 +622,7 @@ td {
   margin-left: auto;
   margin-right: auto;
   font-size: larger !important;
+  margin-top: 30px;
 }
 .nested-button-link {
   display: inline-block;
@@ -713,6 +714,9 @@ tr:hover {
 }
 .listProduct .item button:hover {
   box-shadow: 0 8px 16px hsla(230, 75%, 32%, 0.15);
+}
+.listProduct a:hover{
+  color: #FB8001;
 }
 .product_actions{
   margin-top: 10px;

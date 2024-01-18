@@ -50,6 +50,11 @@
   </div>
   <!------------------End Slider----------------->
   <main class="container my-1 pb-1">
+    <br><br>
+
+    <!-----Featured catagory------------>
+
+    
 
     <br><br>
     <!------------------Latest Products----------------->
@@ -73,8 +78,8 @@
         <div class="product_actions">
           <div class="price">' . $row['price'] . '<b>৳</b></div>
           <div class="product_links">
-            <a href=""><i class="ri-heart-fill nav__search"></i></a>
-            <a href=""><i class="ri-shopping-cart-fill nav__search"></i></a>
+            <a href="wishlist.php?id=' . $row['product_id'] . '"><i class="ri-heart-fill nav__search"></i></a>
+            <a href="cart.php?id=' . $row['product_id'] . '"><i class="ri-shopping-cart-fill nav__search"></i></a>
           </div>
         </div>
         
@@ -83,7 +88,8 @@
       }
 
       ?>
-      
+  
+
 
 
     </div>

@@ -142,10 +142,10 @@
     <div class="listCart">
       <div class="item">
         <div class="image">
-          <img src="/asset/images/img1.png" alt="">
+          <img src="/asset/images/" alt="">
         </div>
-        <div class="name">Corsair Vengence</div>
-        <div class="price">$27</div>
+        <div class="name">\</div>
+        <div class="price"></div>
         <div class="quantity">
           <span class="minus"><strong> - </strong></span>
           <span>1</span>
