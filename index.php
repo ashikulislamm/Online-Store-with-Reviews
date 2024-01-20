@@ -51,11 +51,58 @@
   <!------------------End Slider----------------->
   <main class="container my-1 pb-1">
     <br><br>
-
-    <!-----Featured catagory------------>
-
-    
-
+    <!-------------Featured catagory--------------->
+    <h1 class="title">Featured Categories</h1>
+    <div class="row">
+      <div class="col-6 col-md-3">
+        <div class="category-card">
+          <a href="">
+            <div class="category-card-img">
+              <img src="/asset/images/catagory/smart-watch.png" class="w-40" alt="Laptop">
+            </div>
+            <div class="category-card-body">
+              <a href="">Smart Watch</a>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="category-card">
+          <a href="">
+            <div class="category-card-img">
+              <img src="/asset/images/catagory/earbuds.png" class="w-40" alt="Mobile Devices">
+            </div>
+            <div class="category-card-body">
+              <a href="">Earbuds</a>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="category-card">
+          <a href="">
+            <div class="category-card-img">
+              <img src="/asset/images/catagory/power-bank.png" class="w-40" alt="Mens Fashion">
+            </div>
+            <div class="category-card-body">
+              <a href="">Powerbank</a>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="category-card">
+          <a href="">
+            <div class="category-card-img">
+              <img src="/asset/images/catagory/smart-band.png" class="w-40" alt="Women Fashion">
+            </div>
+            <div class="category-card-body">
+              <a href="">Smart Watch</a>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
     <br><br>
     <!------------------Latest Products----------------->
     <h1 class="title">Latest Products</h1>
@@ -77,24 +124,19 @@
         <span></span>
         <div class="product_actions">
           <div class="price">' . $row['price'] . '<b>৳</b></div>
-          <div class="product_links">
-            <a href="wishlist.php?id=' . $row['product_id'] . '"><i class="ri-heart-fill nav__search"></i></a>
-            <a href="cart.php?id=' . $row['product_id'] . '"><i class="ri-shopping-cart-fill nav__search"></i></a>
-          </div>
+          
         </div>
         
       </div>';
         }
       }
-
       ?>
-  
-
-
-
+    </div>
+    <div class="seeAllBtn">
+      <a href="product.php" class="seeAll">See All Products</a>
     </div>
   </main>
-  
+
   <!-------Footer Section---------->
   <?php include 'footer.php'; ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

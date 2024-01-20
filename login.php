@@ -7,8 +7,10 @@
 
     <!----------------Custom CSS-------------------------->
     <link rel="stylesheet" href="asset/css/style.css" />
-
+    <!-------------------Favicon------------------------->
     <link rel="shortcut icon" href="asset/images/favicon.ico" type="image/x-icon" />
+    <!-----------Sweet Alert-------------------->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-------------------BootStrap CSS------------------->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
@@ -38,16 +40,22 @@
             $_SESSION['id'] = null;
             if (is_array($row) && !empty($row)) {
                 $_SESSION['valid'] = true;
-                $_SESSION['user_email']=$row['email'];
+                $_SESSION['user_email'] = $row['email'];
                 $_SESSION['user_name'] = $row['user_name'];
                 $_SESSION['user_address'] = $row['user_address'];
                 $_SESSION['active_orders'] = $row['active_orders'];
                 $_SESSION['user_id'] = $row['user_id'];
-            } else {
-                echo "<div class='message'>
-                <p> Wrong Username or password </p><br>
-                <a href='login.php' class='nested-button-link'><button class='nested-button'>Back</button></a>
-                </div> <br>";
+            } else { 
+                echo '
+                <script>
+                    swal({
+                        title: "Login Failed!",
+                        text: "Please enter correct Email and Password!",
+                        icon: "error",
+                        button: "Try Again!",
+                    });
+                </script>
+                ';
             }
 
             if (isset($_SESSION['valid'])) {
@@ -55,35 +63,36 @@
                 echo '<script>window.location="index.php"</script>';
                 exit();
             }
-        } else {
+        } //else {
 
         ?>
-            <form action="" class="login__form" method="post">
-                <h2 class="login__title">Log In</h2>
+        <form action="" class="login__form" method="post">
+            <h2 class="login__title">Log In</h2>
 
-                <div class="login__group">
-                    <div>
-                        <label for="email" class="login__label">Email</label>
-                        <input type="email" required placeholder="Write your email" id="email" class="login__input" name="email" />
-                    </div>
-
-                    <div>
-                        <label for="password" class="login__label">Password</label>
-                        <input type="password" required placeholder="Enter your password" id="password" class="login__input" name="password" />
-                    </div>
+            <div class="login__group">
+                <div>
+                    <label for="email" class="login__label">Email</label>
+                    <input type="email" required placeholder="Write your email" id="email" class="login__input" name="email" />
                 </div>
 
                 <div>
-                    <p class="login__signup">
-                        You do not have an account? <a href="/signup.php">SIGNUP</a>
-                    </p>
-
-                    <a href="#" class="login__forgot"> You forgot your password </a>
-
-                    <button type="submit" class="login__button" name="login">Log In</button>
+                    <label for="password" class="login__label">Password</label>
+                    <input type="password" required placeholder="Enter your password" id="password" class="login__input" name="password" />
                 </div>
-            </form>
-        <?php } ?>
+            </div>
+
+            <div>
+                <p class="login__signup">
+                    You do not have an account? <a href="/signup.php">SIGNUP</a>
+                </p>
+
+                <a href="#" class="login__forgot"> You forgot your password </a>
+
+                <button type="submit" class="login__button" name="login">Log In</button>
+            </div>
+        </form>
+        <?php //} 
+        ?>
     </div>
     <!--Footer Section-->
 

@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="asset/css/style.css" />
 
     <link rel="shortcut icon" href="asset/images/favicon.ico" type="image/x-icon" />
+    <!-----------Sweet Alert-------------------->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-------------------BootStrap CSS------------------->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -37,18 +39,28 @@
                 <img src="/asset/images/products/' . $row['product_photo'] . '" alt="">
             </div>
             <div class="content">
+                <div class="cat">Brand : ' . $row['Brand'] . '</div>
                 <h1 class="name">' . $row['product_name'] . '</h1>
                 <div class="cat">Category : ' . $row['catagory'] . '</div>
-                <div class="price">' . $row['price'] . '<b>৳</b></div>
+                <div class="price">' . $row['price'] . '<b>৳</b></div>';
+
+            if ($row["stock_status"] > 0) {
+                echo '<div class="instock">In Stock</div>';
+            } else {
+                echo '<div class="outstock">Out of Stock</div>';
+            }
+            echo '
                 <div class="buttons">
-                    <button>
-                        Wishlist
-                        <span><i class="ri-heart-fill"></i></span>
-                    </button>
-                    <button>
-                        Add To Cart
-                        <span><i class="ri-shopping-cart-fill"></i></span>
-                    </button>
+                    <form action="" method="post">
+                        <button type="submit" name="wishlist">
+                            Wishlist
+                            <span><i class="ri-heart-fill"></i></span>
+                        </button>
+                        <button type="submit" name="addtocart">
+                            Add To Cart
+                            <span><i class="ri-shopping-cart-fill"></i></span>
+                        </button>
+                    </form>
                 </div>
                 <div class="description">
                 ' . $row['product_descr'] . '
@@ -76,10 +88,6 @@
                             <span></span>
                             <div class="product_actions">
                             <div class="price">' . $row2['price'] . '<b>৳</b></div>
-                            <div class="product_links">
-                                <a href=""><i class="ri-heart-fill nav__search"></i></a>
-                                <a href=""><i class="ri-shopping-cart-fill nav__search"></i></a>
-                            </div>
                             </div>
                         </div>';
             }
@@ -87,6 +95,43 @@
         }
         ?>
     </div>
+    <?php
+    if (isset($_POST['wishlist'])) {
+        if (isset($_SESSION['id']) && $_SESSION['id'] != null) {
+            $product_id = isset($_GET['id']) ? $_GET['id'] : null;
+            $user_id = $_SESSION['id'];
+            $sql = "INSERT INTO wishlist (user_id, products_id) VALUES ('$user_id', '$product_id')";
+            if ($con->query($sql) === TRUE) {
+                echo '
+                <script>
+                    swal({
+                        title: "Added to wishlist!",
+                        text: "visit your Profile Dashboard to View Favourites Products!",
+                        icon: "success",
+                        button: "Ok!",
+                    });
+                </script>
+                ';
+            } else {
+                echo "Error: " . $sql . "<br>" . $con->error;
+            }
+        } else {
+            echo '
+                <script>
+                    swal({
+                        title: "Can not Add!",
+                        text: "Please Login to Add Products to Your WIshlist!",
+                        icon: "error",
+                        button: "Ok!",
+                    });
+                </script>
+                ';
+        }
+    }
+
+
+    ?>
+
 
     <!-------Footer Section---------->
     <?php include 'footer.php'; ?>

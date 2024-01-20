@@ -116,7 +116,6 @@
                   </div>';
         }
         ?>
-
         <!-- Toggle button -->
         <div class="nav__toggle" id="nav-toggle">
           <i class="fa-solid fa-bars"></i>
@@ -142,9 +141,9 @@
     <div class="listCart">
       <div class="item">
         <div class="image">
-          <img src="/asset/images/" alt="">
+          <img src="/asset/images/products/amazfit_t_rex.png" alt="">
         </div>
-        <div class="name">\</div>
+        <div class="name">Amazfit T-Rex</div>
         <div class="price"></div>
         <div class="quantity">
           <span class="minus"><strong> - </strong></span>
