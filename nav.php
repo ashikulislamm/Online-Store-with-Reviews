@@ -139,18 +139,31 @@
   <div class="cartTab">
     <h1>Your Cart</h1>
     <div class="listCart">
-      <div class="item">
-        <div class="image">
-          <img src="/asset/images/products/amazfit_t_rex.png" alt="">
-        </div>
-        <div class="name">Amazfit T-Rex</div>
-        <div class="price"></div>
-        <div class="quantity">
-          <span class="minus"><strong> - </strong></span>
-          <span>1</span>
-          <span class="plus"><strong> + </strong></span>
-        </div>
-      </div>
+        <?php
+        if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+          foreach ($_SESSION['cart'] as $productId) {
+            $result = mysqli_query($con, "SELECT * FROM products WHERE product_id = $productId");
+            $row = $result->fetch_assoc();
+            echo '
+            <div class="item">
+              <div class="image">
+                <img src="/asset/images/products/' . $row['product_photo'] . '" alt="">
+              </div>
+              <div class="name">' . $row['product_name'] . '</div>
+              <div class="price">' . $row['price'] . '<b>৳</b></div>
+              <div class="quantity">
+                  <span class="minus"><strong> - </strong></span>
+                  <span>1</span>
+                  <span class="plus"><strong> + </strong></span>
+                </div><br>
+            </div>
+            ';
+          }
+        }
+        ?>
+        
+      
+
     </div>
     <div class="btn">
       <button class="closee">Close</button>

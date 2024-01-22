@@ -28,6 +28,8 @@
     <div class="container">
         <div class="title">Product Detail</div>
         <?php include 'config.php';
+        //Dsplay the Product details
+
         $productId = isset($_GET['id']) ? $_GET['id'] : null;
         $result = mysqli_query($con, "SELECT * FROM products WHERE product_id = $productId");
         $row = $result->fetch_assoc();
@@ -39,7 +41,7 @@
                 <img src="/asset/images/products/' . $row['product_photo'] . '" alt="">
             </div>
             <div class="content">
-                <div class="cat">Brand : ' . $row['Brand'] . '</div>
+                <div class="cat">Brand : ' . $row['brand'] . '</div>
                 <h1 class="name">' . $row['product_name'] . '</h1>
                 <div class="cat">Category : ' . $row['catagory'] . '</div>
                 <div class="price">' . $row['price'] . '<b>৳</b></div>';
@@ -72,6 +74,7 @@
         } else {
             echo '<p>Product not found</p>';
         }
+        //Show Related Products
         $sql2 = "SELECT * FROM products WHERE catagory = '$product_cat' AND product_id != $productId LIMIT 4";
         $result2 = mysqli_query($con, $sql2);
         if ($result2->num_rows > 0) {
@@ -96,6 +99,7 @@
         ?>
     </div>
     <?php
+    //Add Products to Wishlist
     if (isset($_POST['wishlist'])) {
         if (isset($_SESSION['id']) && $_SESSION['id'] != null) {
             $product_id = isset($_GET['id']) ? $_GET['id'] : null;
@@ -129,6 +133,27 @@
         }
     }
 
+
+    ?>
+
+    <?php
+    //Add to Cart Products
+    if (isset($_POST['addtocart'])) {
+        if (!isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = array();
+        }
+        $_SESSION['cart'][] = $productId;
+        echo '
+                <script>
+                    swal({
+                        title: "Product Added to Cart!",
+                        text: "View Your Cart to see products!",
+                        icon: "success",
+                        button: "Ok!",
+                    });
+                </script>
+                ';
+    }
 
     ?>
 
