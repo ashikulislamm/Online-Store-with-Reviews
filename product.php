@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +25,7 @@
   <?php include 'nav.php'; ?>
   <!-----Show start---->
   <div class="container">
-    <h1 class="title" style="margin-top: 20px;">Products</h1>
+    <h1 class="title" style="margin-top: 120px;">Products</h1>
     <div class="listProduct">
       <?php include 'config.php';
       if ($con->connect_error) {
@@ -46,10 +44,6 @@
         <span></span>
         <div class="product_actions">
           <div class="price">' . $row['price'] . '<b>৳</b></div>
-          <div class="product_links">
-            <a href=""><i class="ri-heart-fill nav__search"></i></a>
-            <a href=""><i class="ri-shopping-cart-fill nav__search"></i></a>
-          </div>
         </div>
         
       </div>';
@@ -63,3 +57,9 @@
 </body>
 
 </html>
+<!----------------------
+<div class="product_links">
+            <a href=""><i class="ri-heart-fill nav__search"></i></a>
+            <a href=""><i class="ri-shopping-cart-fill nav__search"></i></a>
+          </div>
+--------->

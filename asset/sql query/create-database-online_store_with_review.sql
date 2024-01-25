@@ -161,3 +161,62 @@ insert into products(product_id,catagory,brand,product_name,product_descr,price,
 insert into products(product_id,catagory,brand,product_name,product_descr,price,stock_status,product_photo) values(3004,"PowerBank","Baseus","Baseus PPXJ30 Star Lord Digital Display 22.5W 30000mAh Fast Charge Power Bank","  The Baseus PPXJ30 Star Lord Digital Display 22.5W 30000mAh Fast Charge Power Bank – a must-have gadget that combines convenience and efficiency in one powerful package. With its 20W Power Delivery (PD) fast charging capability, this power bank can supercharge your devices, such as the Apple iPhone 13, to 50% battery in just 30 minutes, ensuring you're always connected and on the move. ",3250,21,"baseus_ppxj30_start_lord_digital_display_22.5w_30000mah_fast_charge.png");
 insert into products(product_id,catagory,brand,product_name,product_descr,price,stock_status,product_photo) values(3005,"PowerBank","Havit","Havit PB90 10000mAh Power Bank"," he Havit PB90 10000mAh Power Bank is a portable charging device that provides a convenient solution for charging your electronic devices on the go. With a capacity of 10000mAh, it offers a substantial amount of power to keep your devices charged throughout the day. The power bank features multiple input and output options for versatile charging capabilities. It supports MicroUSB and Type-C input voltages, allowing you to recharge the power bank using either of these connectors. The MicroUSB input supports DC5V/2.0A, 9V/2.0A, and 12V/1.5A (18W) charging options, while the Type-C input supports DC5V/2.0A, 9V/2.0A, and 12V/1.5A (18W) charging options as well",1350,20,"havit_pb90_10000mah.png");
 
+use online_store_with_review;
+insert into products(product_id,catagory,brand,product_name,product_descr,price,stock_status,product_photo) values (4003,"Neckband","Baseus","Baseus Bowie P1 Half-In-ear Neckband Wireless Earphone","The Baseus Bowie P1 Half-In-Ear Neckband Wireless Earphone features a 14mm PET diaphragm coil for excellent sound quality. The neckband earphone has a Bluetooth 5.2 wireless chip for connecting your device up to 10 meters. It gives a 0.06 s low latency rate and a more stable connection for better synchronization of video, audio, and gaming. The Baseus Bowie P1 Neckband Wireless Earphone comes with a 170 mAh large battery. The 170 mAh battery provides up to 25 hours of playtime on a full charge. In 1.5 hours, the battery will be fully charged. The Baseus Bowie P1 Neckband Wireless Earphone also splashes water. rain- and sweat-resistant You can use them while jogging, walking, working out at the gym, and so on.",1800,12,"bowie_p1.png");
+
+use online_store_with_review;
+create table pre_booking(
+    users_id int not null ,
+    foreign key(users_id) references user(user_id),
+    user_name varchar(100),
+    email varchar(100),
+    phone_num varchar(11),
+    product_id varchar(10)
+);
+
+use online_store_with_review;
+create table upcoming(
+    product_id int not null primary key,
+    product_name varchar(500),
+    product_photo varchar(100),
+    brand varchar(100),
+    catagory varchar(100),
+    product_descr varchar(500)
+);
+
+use online_store_with_review;
+insert into upcoming  (product_id,product_name,product_photo,brand,catagory,product_descr) values (4001,"Yison E18 Wireless In Ear Neckband","yison_e18.png","Yison","Neckband","The Yison E18 Wireless In Ear Neckband are the ideal earphones for music lovers who want to enjoy wireless freedom and high-quality sound. These Neckband use Bluetooth 5.0 technology to connect with your devices and support AAC codecs, which deliver rich and detailed sound. The Yison E18 Wireless In Ear Neckband are also , which means they can withstand any weather conditions and intense workouts. The earphones have a 130mAh battery that offers up to 8 hours of music time and 250 hours of standby time on a single charge. The earphones also have a stylish and ergonomic neckband that fits comfortably around your neck and prevents the earbuds from falling off. The Yison E18 Wireless In Ear Neckband are the perfect earphones for anyone who values sound quality and durability.");
+insert into upcoming  (product_id,product_name,product_photo,brand,catagory,product_descr) values (4002,"Oraimo Bow OEB-E58D Neckband Wireless Earphone","oraimo_bow.png","Oraimo","Neckband","The Oraimo Bow OEB-E58D Neckband Wireless Earphone has been designed to revolutionize your workouts. Its dynamic sound technology provides powerful and balanced sound. Oraimo Bow OEB-E58D can withstand strenuous training sessions thanks to its sweat-proof design, and the secure fit ensures a comfortable and personalized in-ear experience. Benefit from a long-lasting battery that provides up to 160 hours of standby or 10 hours of music play and talk time, as well as easy control with the in-line microphone and remote. The Oraimo Bow earphone, your ultimate fitness companion, will take your workouts to the next level.");
+
+
+use online_store_with_review;
+insert into upcoming  (product_id,product_name,product_photo,brand,catagory,product_descr) values (5001,"TX3 Mini-A Android 7.1 2GB RAM 16GB ROM TV Box","tx3_mini.png","Non-Brand","Tv Box","TX3 Mini-A Android 7.1 TV Box is built in Wifi,802.1.1b/g/n, RJ45 Ethernet port. This TV Box has 2GB DDR3 RAM and 16GB ROM, DC 5V/2A, Mail-450 penta-core,up to 750MHz+(DVFS) GPU, Amlogic S905W up to 2.0GHz,Quad core ARM Cortex-A53 CPU, 2 High speed USB 2.0,support U DISK and USB HDD with TF Card Reader. The AV(3 in 1)port also available in this TV Box. This TV Box supports TV, Projectors, and Monitors as well as USB webcams, USB Mouse and also Wireless Mouse and Gyroscopic Mouse Keyboard. HDMI ,AV, Optical, USB x 2, Ethernet/ LAN port, DC 5V Power Input, SD/ MMC Card Slot are also available in this TV Box. It has no warranty");
+insert into upcoming  (product_id,product_name,product_photo,brand,catagory,product_descr) values (5002,"Xiaomi TV Box S (2nd Gen) 4K Ultra HD Streaming with Google TV","xiaomi_tv_box-s_2nd_gen.png","Xiaomi","Tv Box","Xiaomi TV Box S (2nd Gen) comes with a quad-core CPU that delivers efficient performance. It is equipped with a high-performance ARM Mali G31 MP2 GPU. It comes with a 2GB RAM + 8GB ROM combo offering a smoother viewing experience. It offers 4K Ultra HD resolution, Dolby Vision & HDR10+, Dolby Atmos & DTS-HD, Google TV, 360° Bluetooth & IR remote control, Chromecast Built-in, and mainstream ports for easy expansion.");
+
+
+use online_store_with_review;
+insert into upcoming  (product_id,product_name,product_photo,brand,catagory,product_descr) values (6001,"BOYA BY-M1S Universal Lavalier Microphone","by_m1s.png","Boya","Microphone","The BOYA BY-M1S Universal Lavalier Microphone is a clip-on microphone suitable for use with computers, smartphones, cameras, camcorders, audio recorders, and other audio/video recording equipment. BOYA BY-M1S is the best condenser microphone for recording audio and video. It offers an omnidirectional pick-up pattern. The BOYA BY-M1S Universal Lavalier Microphone requires no batteries as it is powered by connected devices. It also features low-handling noise.");
+insert into upcoming  (product_id,product_name,product_photo,brand,catagory,product_descr) values (6002,"Redragon GM99 STIX USB Microphone","gm99_stix_2.png","Redragon","Microphone","Redragon GM99 STIX USB Microphone features smooth recording and clear voice. It is suitable for podcasting, chatting, recording vocals, podcasting, YouTube, Twitch, Skype, FaceTime, games, MSN, etc. It comes with RGB backlighting from the stand. it has a compact size and is very easy to carry. It is portable and durable. It features a flexible soft tube design, The neck can be adjusted 360 degrees. It supports a built-in sound card in your computer, no need to install drivers, easy to install, compatible with Windows (7, 8, and 10). it has a 1-year warranty.");
+insert into upcoming  (product_id,product_name,product_photo,brand,catagory,product_descr) values (7001,"Lenovo Thinkplus K3 Mini Bluetooth Speaker","lenovo_k3_mini.png","Lenovo","Speaker","The Lenovo K3 Mini Wireless Speaker comes with upgraded BT5.0 chip, low latency, stable and fast transmission, wide compatibility. It also equipped with metal composite diaphragm, omnidirectional sound technology ensures the balanced diffusion of sound, bright treble, full midrange and powerful bass, HiFi sound quality. The Lenovo K3 comes with a lanyard, easy to carry and use whenever you want. It has built-in microphone, intelligent noise reduction, clear and bright sound without delay and it also has silicone buttons, comfortable feel, sensitive response, easy to operate. The Lenovo K3 Mini Wireless Speaker has no warranty.");
+insert into upcoming  (product_id,product_name,product_photo,brand,catagory,product_descr) values (7002,"JOYROOM JR-ML03 Transparent RGB Bluetooth Wireless Speaker","jr_ml03.png","Joyroom","Speaker","The JOYROOM JR-ML03 is a Transparent luminous Bluetooth speaker. It is equipped with a 52mm driver unit and can deliver a power output of up to 5 watts. This Bluetooth speaker comes with Bluetooth version 5.1 and has a communication range of 12 meters. It has a frequency response of 50HZ-12khz and a horn sensitivity of -38±2dB. It is supported with HSP/HFP/A2DP/AVRCP protocols and SBC/MP3/WMA/FLAC/ MP4/M4A audio decoding. The JOYROOM JR-ML03 is powered by a 600mAh and comes with a Type-C charging interface. It takes 1.5 hours to be fully charged. It can deliver music time of about 6 hours with 70% volume and talk time of up to 7 hours with 70% volume. It has a connection standby time of 48 hours. The JOYROOM JR-ML03 comes with no warranty.");
+
+
+
+
+use online_store_with_review;
+select * from upcoming;
+
+
+
+use online_store_with_review;
+create table on_sale(
+    product_id int not null primary key,
+    product_name varchar(500),
+    product_photo varchar(100),
+    brand varchar(100),
+    catagory varchar(100),
+    product_descr varchar(500),
+    old_price int ,
+    new_price int,
+    stock_status int
+);

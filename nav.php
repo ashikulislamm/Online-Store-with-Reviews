@@ -46,7 +46,7 @@
           </li>
 
           <li class="nav__item">
-            <a href="#" class="nav__link">Coming Soon</a>
+            <a href="upcoming.php" class="nav__link">Coming Soon</a>
           </li>
         </ul>
 

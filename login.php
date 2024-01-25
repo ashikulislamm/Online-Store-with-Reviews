@@ -10,8 +10,7 @@
     <!-------------------Favicon------------------------->
     <link rel="shortcut icon" href="asset/images/favicon.ico" type="image/x-icon" />
     <!-----------Sweet Alert-------------------->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    <script src="/asset/js/sweetalert.js"></script>
     <!-------------------BootStrap CSS------------------->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <!--Font Awsome-->
