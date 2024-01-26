@@ -40,7 +40,7 @@
                 <img src="/asset/images/products/' . $row['product_photo'] . '" alt="">
             </div>
             <div class="content">
-                <div class="cat">Brand : ' . $row['Brand'] . '</div>
+                <div class="cat">Brand : ' . $row['brand'] . '</div>
                 <h1 class="name">' . $row['product_name'] . '</h1>
                 <div class="cat">Category : ' . $row['catagory'] . '</div>
                 <div class="price">' . $row['price'] . '<b>৳</b></div>';
