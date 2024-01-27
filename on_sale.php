@@ -32,21 +32,21 @@
         die("Connection failed: " . $con->connect_error);
       }
 
-      $sql = "SELECT * FROM products";
+      $sql = "SELECT * FROM on_sale";
       $result = $con->query($sql);
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
           echo '<div class="item" data-id="1">
-        <img src="/asset/images/products/' . $row['product_photo'] . '" alt="">
-        <a href="productDetail.php?id=' . $row['product_id'] . '" class="product_name">
-          <h2>' . $row['product_name'] . '</h2>
-        </a>
-        <span></span>
-        <div class="product_actions">
-          <div class="price">' . $row['price'] . '<b>৳</b></div>
-        </div>
-        
-      </div>';
+                    <img src="/asset/images/products/' . $row['product_photo'] . '" alt="">
+                    <a href="productDetail.php?id=' . $row['product_id'] . '" class="product_name">
+                        <h2>' . $row['product_name'] . '</h2>
+                    </a>
+                    <span></span>
+                    <div class="product_actions">
+                        <div class="price"><strike>' . $row['old_price'] . '<b>৳</b></strike></div>
+                        <div class="price">' . $row['new_price'] . '<b>৳</b></div>
+                    </div>
+                </div>';
         }
       }
       ?>

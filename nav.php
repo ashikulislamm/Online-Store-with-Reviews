@@ -30,7 +30,7 @@
       <div class="nav__menu" id="nav-menu" style="margin-top: 15px;">
         <ul class="nav__list">
           <li class="nav__item">
-            <a href="#" class="nav__link">On Sale</a>
+            <a href="on_sale.php" class="nav__link">On Sale</a>
           </li>
 
           <li class="nav__item">
@@ -46,7 +46,7 @@
           </li>
 
           <li class="nav__item">
-            <a href="#" class="nav__link">Coming Soon</a>
+            <a href="upcoming.php" class="nav__link">Coming Soon</a>
           </li>
         </ul>
 

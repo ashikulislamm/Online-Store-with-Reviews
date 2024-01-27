@@ -98,7 +98,7 @@
               <img src="/asset/images/catagory/smart-band.png" class="w-40" alt="Women Fashion">
             </div>
             <div class="category-card-body">
-              <a href="">Smart Watch</a>
+              <a href="">Smart Band</a>
             </div>
           </a>
         </div>

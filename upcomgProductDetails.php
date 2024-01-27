@@ -28,9 +28,8 @@
         <div class="title">Product Detail</div>
         <?php include 'config.php';
         //Dsplay the Product details
-
         $productId = isset($_GET['id']) ? $_GET['id'] : null;
-        $result = mysqli_query($con, "SELECT * FROM products WHERE product_id = $productId");
+        $result = mysqli_query($con, "SELECT * FROM upcoming WHERE product_id = $productId");
         $row = $result->fetch_assoc();
         $product_cat = $row['catagory'];
         if ($result->num_rows > 0) {
@@ -43,13 +42,10 @@
                 <div class="cat">Brand : ' . $row['brand'] . '</div>
                 <h1 class="name">' . $row['product_name'] . '</h1>
                 <div class="cat">Category : ' . $row['catagory'] . '</div>
-                <div class="price">' . $row['price'] . '<b>৳</b></div>';
+                <div class="instock">Coming Soon</div>
+                ';
 
-            if ($row["stock_status"] > 0) {
-                echo '<div class="instock">In Stock</div>';
-            } else {
-                echo '<div class="outstock">Out of Stock</div>';
-            }
+
             echo '
                 <div class="buttons">
                     <form action="" method="post">
@@ -57,9 +53,9 @@
                             Wishlist
                             <span><i class="ri-heart-fill"></i></span>
                         </button>
-                        <button type="submit" name="addtocart">
-                            Add To Cart
-                            <span><i class="ri-shopping-cart-fill"></i></span>
+                        <button type="submit" name="prebook">
+                            Pre Book
+                            <span><i class="ri-bookmark-fill"></i></span>
                         </button>
                     </form>
                 </div>
@@ -82,7 +78,7 @@
             <div class="listProduct">
             ';
             while ($row2 = $result2->fetch_assoc()) {
-                echo '  <div class="item" data-id="1">
+                echo '<div class="item" data-id="1">
                             <img src="/asset/images/products/' . $row2['product_photo'] . '" alt="">
                             <a href="productDetail.php?id=' . $row2['product_id'] . '" class="product_name">
                                 <h2>' . $row2['product_name'] . '</h2>
@@ -97,6 +93,47 @@
         }
         ?>
     </div>
+    <?php
+    //Pre Booking
+    if (isset($_POST['prebook'])) {
+        if (isset($_SESSION['id']) && $_SESSION['id'] != null) {
+            $product_id = isset($_GET['id']) ? $_GET['id'] : null;
+            $users_id = $_SESSION['id'];
+            $fetchuser = mysqli_query($con, "SELECT * FROM user WHERE user_id = $users_id");
+            $userrow = $fetchuser->fetch_assoc();
+            $user_email = $userrow['email'];
+            $user_name = $userrow['user_name'];
+            $user_phone = $userrow['user_number'];
+            $sql = "INSERT INTO pre_booking (users_id, user_name ,email ,phone_num ,product_id) VALUES ('$users_id', '$user_name' , '$user_email' , '$user_phone' , '$product_id')";
+            if ($con->query($sql) === TRUE) {
+                echo '
+                <script>
+                    swal({
+                        title: "Pre Booked!",
+                        text: "Wait for next updates to get your products!",
+                        icon: "success",
+                        button: "Ok!",
+                    });
+                </script>
+                ';
+            } else {
+                echo "Error: " . $sql . "<br>" . $con->error;
+            }
+        } else {
+            echo '
+                <script>
+                    swal({
+                        title: "Can not Pre Book!",
+                        text: "Please Login for Pre Booking!",
+                        icon: "error",
+                        button: "Ok!",
+                    });
+                </script>
+                ';
+        }
+    }
+    ?>
+
     <?php
     //Add Products to Wishlist
     if (isset($_POST['wishlist'])) {
@@ -132,39 +169,8 @@
         }
     }
     ?>
-    
-    <?php
-    //Add to Cart Products
-    if (isset($_POST['addtocart'])) {
-        if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = array();
-        }
-        if ($row["stock_status"] > 0) {
-            $_SESSION['cart'][] = $productId;
-            echo '
-                <script>
-                    swal({
-                        title: "Product Added to Cart!",
-                        text: "View Your Cart to see products!",
-                        icon: "success",
-                        button: "Ok!",
-                    });
-                </script>
-                ';
-        } else {
-            echo '
-                <script>
-                    swal({
-                        title: "Can not Add to Cart!",
-                        text: "Product is out of stock!",
-                        icon: "error",
-                        button: "Ok!",
-                    });
-                </script>
-                ';
-        }
-    }
-    ?>
+
+
     <!-------Footer Section---------->
     <?php include 'footer.php'; ?>
     <script src="/asset/js/script.js"></script>
