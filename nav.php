@@ -124,15 +124,46 @@
       </div>
     </nav>
 
+
+    
     <!--==================== SEARCH ====================-->
     <div class="search" id="search">
       <form action="" class="search__form">
         <i class="fa-solid fa-magnifying-glass search__icon"></i>
-        <input type="search" placeholder="What are you looking for?" class="search__input" /><button type="reset">&times;</button>
+        <input type="search" placeholder="What are you looking for?" class="search__input" id="live_search" autocomplete="off" />
+        <button type="reset">&times;</button>
+         
       </form>
 
-      <i class="fa-solid fa-x search__close" id="search-close"></i>
+      <div id="searchresult"></div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <script type="text/javascript">
+      $(document).ready(function(){
+         
+      $("#live_search").keyup(function(){
+         var input=$(this).val();
+         if(input !=""){
+          $.ajax({
+            url:"searchshow.php",
+            method:"POST",
+            data:{input:input},
+
+            success:function(data){
+              $("#searchresult").html(data);
+            }
+          });
+         }else{
+          $("#searchresult").css("display", "none");
+         }
+      });
+
+    });
+     </script>
+    
+    <i class="fa-solid fa-x search__close" id="search-close"></i>
     </div>
+
+    
 
   </header>
 
