@@ -125,7 +125,7 @@
                 <script>
                     swal({
                         title: "Failed to Add!",
-                        text: "Please Login to Add Products to Your WIshlist!",
+                        text: "Please Login to Add Products to Your Wishlist!",
                         icon: "error",
                         button: "Ok!",
                     });

@@ -21,7 +21,8 @@
 <body>
     <!--Header Section-->
 
-    <?php include 'nav.php'; ?>
+    <?php include 'nav.php';
+    ?>
 
 
     <div class="container checkout">
@@ -29,58 +30,58 @@
         <div class="row checkout_row">
             <div class="col-25">
                 <div class="container">
-                    <h4>Items <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-                    <p><a href="#">Nike Shoes </a> <span class="price">₹2000</span></p>
-                    <p><a href="#">Jio Phone</a> <span class="price">₹1000</span></p>
-                    <p><a href="#">Iphone 13 pro max</a> <span class="price">₹20000</span></p>
-                    <p><a href="#">Tomato</a> <span class="price">₹400</span></p>
+                    <h4>Items <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i></span></h4>
+                    <?php
+                    include 'config.php';
+
+                    $totalPrice = 0;
+
+                    if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+                        foreach ($_SESSION['cart'] as $cartItemID) {
+                            $result = mysqli_query($con, "SELECT product_name, price FROM products WHERE product_id='$cartItemID'");
+                            $row = mysqli_fetch_assoc($result);
+
+                            echo '<p style="font-weight: bold;font-size 20px;">' . $row['product_name'] . ' <span class="price">৳' . $row['price'] . '</span></p>';
+                            $totalPrice += $row['price'];
+                        }
+                    }
+                    ?>
                     <hr>
-                    <p>Total <span class="price" style="color:black"><b>₹23400</b></span></p>
+                    <p>Total <span class="price" style="color:black"><b>৳<?php echo $totalPrice; ?></b></span></p>
                 </div>
             </div>
             <div class="col-75">
                 <div class="container">
-                    <form action="" class="">
+                    <form action="" class="" method="post">
                         <div class="row payment_row">
                             <div class="col-50">
                                 <h3>Billing Address</h3>
                                 <label for="fname" class="login__label">Full Name</label>
-                                <input type="text" class="login__input"  id="fname" name="firstname" required placeholder="Enter Full Name">
+                                <input type="text" class="login__input" id="name" name="name" required placeholder="Enter Full Name">
                                 <label for="email" class="login__label">Email</label>
                                 <input type="text" class="login__input" id="email" name="email" required placeholder="youremail@gamil.com">
                                 <label for="adr" class="login__label">Address</label>
                                 <input type="text" class="login__input" id="adr" name="address" required placeholder="Delivery Address">
-                                <label for="city" class="login__label">City</label>
-                                <input type="text" class="login__input" id="city" name="city" required placeholder="Delivery City">
-
-                                <div class="row">
-                                    <div class="col-50">
-                                        <label for="state" class="login__label">State</label>
-                                        <input type="text" class="login__input" id="state" required name="state" placeholder="Delivery State">
-                                    </div>
-                                    <div class="col-50">
-                                        <label for="zip" class="login__label">Zip</label>
-                                        <input type="text" class="login__input" id="zip" required name="zip" placeholder="Area Postal Code">
-                                    </div>
-                                </div>
+                                <label for="city" class="login__label">Phone Number</label>
+                                <input type="tel" class="login__input" id="tel" name="tel" required placeholder="Contact Number">
                             </div>
 
                             <div class="col-50">
                                 <h3>Payment Methods</h3>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault1" value="COD" checked>
                                     <label class="form-check-label" for="flexRadioDefault1">
                                         Cash On Delivery
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault2" value="Paid" >
                                     <label class="form-check-label" for="flexRadioDefault2">
                                         Online Payment
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault2" value="Paid" >
                                     <label class="form-check-label" for="flexRadioDefault2">
                                         POS On Delivery
                                     </label>
@@ -95,9 +96,9 @@
                                 <img src="/asset/images/Payment_Brands.png" alt="">
                             </div>
                         </div>
-                        <input type="submit" value="Place Order" class="login__button place_order">
+                        <input type="submit" value="Place Order" class="login__button place_order" name="submit">
                     </form>
-                    
+
                 </div>
             </div>
 
@@ -113,3 +114,69 @@
 </body>
 
 </html>
+<?php
+
+$amount =  $totalPrice;
+$order_date = date("Y-m-d");
+$order_status = "on hold";
+$payment_status = "";
+$user_id = $_SESSION['id'];
+
+if (isset($_POST['submit'])) {
+    if (isset($_SESSION['id']) && $_SESSION['id'] != null) {
+        $name = $_POST['name'];
+        $phoneNo = $_POST['tel'];
+        $email = $_POST['email'];
+        $address = $_POST['address'];
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST['paymentMethod'])) {
+                $payment_status = $_POST['paymentMethod'];
+            } else {
+                $payment_status = "No payment method selected.";
+            }
+        }
+
+        mysqli_query($con, "INSERT INTO orders(amount, users_id, receiver_name, dil_address, receiver_phone, receiver_email, order_date, order_status, payment_status) VALUES ('$amount', '$user_id', '$name', '$address', '$phoneNo', '$email', '$order_date', '$order_status', '$payment_status')") or die("Error Occurred");
+
+        $query = mysqli_query($con, "SELECT * FROM orders WHERE users_id='$user_id' AND order_date = '$order_date' AND amount= '$amount'");
+        $row = mysqli_fetch_assoc($query);
+        $order_id = $row['order_id'];
+
+        if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $cartItemID) {
+                mysqli_query($con, "INSERT INTO order_details(order_id, product_id, quantity) VALUES ('$order_id', '$cartItemID', 1)") or die("Error Occurred");
+            }
+        }
+
+
+        echo '
+         <script>
+             swal({
+                 title: "Order Placed Successfully",
+                 text: "Thanks for shopping with us!",
+                 icon: "success",
+                 button: "Ok!",
+             });
+             
+         </script>
+         ';
+        unset($_SESSION['cart']);
+    } else {
+
+        echo '
+         <script>
+             swal({
+                 title: "Cannot Place Order",
+                 text: "Please Log In to place order!",
+                 icon: "error",
+                 button: "Ok!",
+             });
+             
+         </script>
+         ';
+    }
+
+
+    // echo'<script>window.location="index.php"</script>';
+}
+?>
