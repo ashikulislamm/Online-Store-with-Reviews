@@ -123,7 +123,7 @@
             echo '
                 <script>
                     swal({
-                        title: "Can not Pre Book!",
+                        title: "Failed to Pre Book!",
                         text: "Please Login for Pre Booking!",
                         icon: "error",
                         button: "Ok!",
@@ -159,7 +159,7 @@
             echo '
                 <script>
                     swal({
-                        title: "Can not Add!",
+                        title: "Failed to Add!",
                         text: "Please Login to Add Products to Your WIshlist!",
                         icon: "error",
                         button: "Ok!",

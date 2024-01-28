@@ -170,18 +170,23 @@
   <div class="cartTab">
     <h1>Your Cart</h1>
     <div class="listCart">
-        <?php
-        if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-          foreach ($_SESSION['cart'] as $productId) {
-            $result = mysqli_query($con, "SELECT * FROM products WHERE product_id = $productId");
-            $row = $result->fetch_assoc();
-            echo '
+      <?php
+      if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+        foreach ($_SESSION['cart'] as $productId) {
+          $result = mysqli_query($con, "SELECT * FROM products WHERE product_id = $productId");
+          $row = $result->fetch_assoc();
+          echo '
             <div class="item">
               <div class="image">
                 <img src="/asset/images/products/' . $row['product_photo'] . '" alt="">
               </div>
-              <div class="name">' . $row['product_name'] . '</div>
-              <div class="price">' . $row['price'] . '<b>৳</b></div>
+              <div class="name">' . $row['product_name'] . '</div>';
+          if ($row["offer_price"] > 0) {
+            echo '<div class="price">' . $row['offer_price'] . '<b>৳</b></div>';
+          } else {
+            echo '<div class="price">' . $row['price'] . '<b>৳</b></div>';
+          }
+          echo '
               <div class="quantity">
                   <span class="minus"><strong> - </strong></span>
                   <span>1</span>
@@ -189,16 +194,16 @@
                 </div><br>
             </div>
             ';
-          }
         }
-        ?>
-        
-      
+      }
+      ?>
+
+
 
     </div>
-    <div class="btn">
+    <div class="btnn">
       <button class="closee">Close</button>
-      <button class="checkOut">Check Out</button>
+      <button class="checkOut_btn"><a href="checkout.php" style="color: white;">Check Out</a></button>
     </div>
   </div>
 

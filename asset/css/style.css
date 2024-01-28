@@ -178,6 +178,12 @@ td {
   box-shadow: 0 2px 16px hsla(230, 75%, 32%, 0.15);
 }
 /*=============== HEADER & NAV ===============*/
+.carousel-indicators .active {
+  background-color: var(--second-color) !important;
+}
+.carousel-indicators button{
+  background-color: var(--first-color) !important;
+}
 .header {
   position: fixed;
   top: 0;
@@ -341,7 +347,7 @@ td {
 
 .login__input {
   width: 100%;
-  background-color: var(--container-color);
+  background: transparent;
   border: 2px solid var(--border-color);
   padding: 1rem;
   border-radius: 0.5rem;
@@ -380,7 +386,7 @@ td {
 }
 
 .login__button:hover {
-  box-shadow: 0 4px 24px hsla(230, 75%, 40%, 0.4);
+  box-shadow: 0px 0px 15px 1px rgba(8,150,141,0.4);
 }
 /* For medium devices */
 @media screen and (min-width: 576px) {
@@ -745,7 +751,7 @@ tr:hover {
   box-shadow: 0 8px 16px hsla(230, 75%, 32%, 0.15);
 }
 .listProduct a:hover {
-  color: #fb8001;
+  color: var(--second-color);
 }
 .product_actions {
   margin-top: 10px;
@@ -757,7 +763,7 @@ tr:hover {
   content: "";
   display: block;
   width: 100%;
-  height: 1.5px;
+  height: 0.5px;
   background-color: var(--text-color);
 }
 @media only screen and (max-width: 992px) {
@@ -799,7 +805,7 @@ tr:hover {
   text-align: center;
   font-size: 35px;
 }
-.cartTab .btn {
+.cartTab .btnn {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
@@ -808,16 +814,17 @@ tr:hover {
   border: none;
   font-family: Poppins;
   font-weight: 500;
+  font-size: 20px;
   cursor: pointer;
-  color: black;
+  color: white;
   transition: 0.4s;
 }
 .cartTab button:hover {
-  box-shadow: 0 8px 16px hsla(230, 72%, 13%, 0.271);
-  font-size: 20px;
+  /*box-shadow: 0 8px 16px hsla(230, 72%, 13%, 0.271);*/
+  font-size: 25px;
 }
 .cartTab .closee {
-  background: rgb(250, 250, 250);
+  background: var(--second-color);
 }
 .listCart {
   padding: 5px;
@@ -902,8 +909,8 @@ tr:hover {
 }
 .detail .price {
   font-weight: bold;
-  font-size: x-large;
-  letter-spacing: 7px;
+  font-size: large;
+  letter-spacing: 4px;
   margin-bottom: 10px;
 }
 .instock{
@@ -1046,4 +1053,85 @@ tr:hover {
   
   font-family: var(--body-font);
   transition: 0.4s;
+}
+
+/*=================Checkout==================*/
+.checkout{
+  margin-top: 100px;
+}
+.checkout_row {
+  display: -ms-flexbox;
+  /* IE10 */
+  display: flex;
+  flex-direction: column;
+  -ms-flex-wrap: wrap;
+  /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%;
+  /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%;
+  /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%;
+  /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.checkout {
+  margin-bottom: 20px;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .payment_row{
+    flex-direction: column;
+  }
+
+  .col-25 {
+      margin-bottom: 20px;
+  }
 }

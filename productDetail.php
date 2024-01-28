@@ -40,11 +40,13 @@
                 <img src="/asset/images/products/' . $row['product_photo'] . '" alt="">
             </div>
             <div class="content">
-                <div class="cat">Brand : ' . $row['brand'] . '</div>
+                <div class="cat">Brand : ' . $row['Brand'] . '</div>
                 <h1 class="name">' . $row['product_name'] . '</h1>
                 <div class="cat">Category : ' . $row['catagory'] . '</div>
-                <div class="price">' . $row['price'] . '<b>৳</b></div>';
-
+                <div class="price">Regular Price : ' . $row['price'] . '<b>৳</b></div>';
+            if ($row["offer_price"] > 0) {
+                echo '<div class="price">Discounted Price : ' . $row['offer_price'] . '<b>৳</b></div>';
+            }
             if ($row["stock_status"] > 0) {
                 echo '<div class="instock">In Stock</div>';
             } else {
@@ -122,7 +124,7 @@
             echo '
                 <script>
                     swal({
-                        title: "Can not Add!",
+                        title: "Failed to Add!",
                         text: "Please Login to Add Products to Your WIshlist!",
                         icon: "error",
                         button: "Ok!",
@@ -132,7 +134,7 @@
         }
     }
     ?>
-    
+
     <?php
     //Add to Cart Products
     if (isset($_POST['addtocart'])) {
@@ -140,8 +142,21 @@
             $_SESSION['cart'] = array();
         }
         if ($row["stock_status"] > 0) {
-            $_SESSION['cart'][] = $productId;
-            echo '
+            if (in_array($productId, $_SESSION['cart'])) {
+                echo '
+                <script>
+                    swal({
+                        title: "Cannot Add to Cart!",
+                        text: "Product is Already in yout cart",
+                        icon: "warning",
+                        button: "Ok!",
+                    });
+                </script>
+                ';
+                //exit();
+            } else {
+                $_SESSION['cart'][] = $productId;
+                echo '
                 <script>
                     swal({
                         title: "Product Added to Cart!",
@@ -151,6 +166,7 @@
                     });
                 </script>
                 ';
+            }
         } else {
             echo '
                 <script>

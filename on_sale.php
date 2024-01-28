@@ -25,14 +25,14 @@
   <?php include 'nav.php'; ?>
   <!-----Show start---->
   <div class="container">
-    <h1 class="title" style="margin-top: 120px;">Products</h1>
+    <h1 class="title" style="margin-top: 120px;">On Sale Products</h1>
     <div class="listProduct">
       <?php include 'config.php';
       if ($con->connect_error) {
         die("Connection failed: " . $con->connect_error);
       }
 
-      $sql = "SELECT * FROM on_sale";
+      $sql = "SELECT * FROM products where offer_price>0";
       $result = $con->query($sql);
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
@@ -43,8 +43,8 @@
                     </a>
                     <span></span>
                     <div class="product_actions">
-                        <div class="price"><strike>' . $row['old_price'] . '<b>৳</b></strike></div>
-                        <div class="price">' . $row['new_price'] . '<b>৳</b></div>
+                        <div class="price"><strike>' . $row['price'] . '<b>৳</b></strike></div>
+                        <div class="price">' . $row['offer_price'] . '<b>৳</b></div>
                     </div>
                 </div>';
         }
