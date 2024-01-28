@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,43 +23,40 @@
 
 <body>
   <div class="container">
-    <h1 class="title" style="margin-top: 20px;">Products</h1>
     <div class="listProduct">
-    <?php
- include("config.php");
- if(isset($_POST['input'])){
-    $input = $_POST['input'];
-    $query ="SELECT * FROM PRODUCTS WHERE product_name LIKE '{$input}%'";
-    $result =mysqli_query($con, $query);
-     if(mysqli_num_rows($result)>0){
-        while ($row = $result->fetch_assoc()) {
+      <?php
+      include("config.php");
+      if (isset($_POST['input'])) {
+        $input = $_POST['input'];
+        $query = "SELECT * FROM PRODUCTS WHERE product_name LIKE '%{$input}%' or catagory LIKE '%{$input}%'";
+        $result = mysqli_query($con, $query);
+        if (mysqli_num_rows($result) > 0) {
+          while ($row = $result->fetch_assoc()) {
             echo '<div class="item" data-id="1">
             <img src="/asset/images/products/' . $row['product_photo'] . '" alt="">
             <a href="productDetail.php?id=' . $row['product_id'] . '" class="product_name">
               <h2>' . $row['product_name'] . '</h2>
             </a>
             <span></span>
-            <div class="product_actions">
-              <div class="price">' . $row['price'] . '<b>৳</b></div>
-              <div class="product_links">
-                <a href=""><i class="ri-heart-fill nav__search"></i></a>
-                <a href=""><i class="ri-shopping-cart-fill nav__search"></i></a>
-              </div>
+            <div class="product_actions">';
+            if ($row["offer_price"] > 0) {
+              echo '<div class="price"><strike>' . $row['price'] . '<b>৳</b></strike></div>';
+              echo '<div class="price">' . $row['offer_price'] . '<b>৳</b></div>';
+            } else {
+              echo '<div class="price">' . $row['price'] . '<b>৳</b></div>';
+            }
+            echo '
             </div>
-            
           </div>';
+          }
+        } else {
+          echo "<h6 class='text-danger text-center mt-3'> NOTHING FOUND </h6>";
         }
-      }else{
-        echo"<h6 class='text-danger text-center mt-3'> NOTHING FOUND </h6>";
-     }
- }
-?>
+      }
+      ?>
     </div>
   </div>
-  <?php include 'footer.php'; ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
 </html>
-
-

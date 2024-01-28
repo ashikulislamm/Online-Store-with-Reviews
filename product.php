@@ -42,10 +42,15 @@
           <h2>' . $row['product_name'] . '</h2>
         </a>
         <span></span>
-        <div class="product_actions">
-          <div class="price">' . $row['price'] . '<b>৳</b></div>
+        <div class="product_actions">';
+          if ($row["offer_price"] > 0) {
+            echo '<div class="price"><strike>' . $row['price'] . '<b>৳</b></strike></div>';
+            echo '<div class="price">' . $row['offer_price'] . '<b>৳</b></div>';
+          } else {
+            echo '<div class="price">' . $row['price'] . '<b>৳</b></div>';
+          }
+          echo '
         </div>
-        
       </div>';
         }
       }

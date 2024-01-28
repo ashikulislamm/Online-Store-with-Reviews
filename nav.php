@@ -10,7 +10,8 @@
 
     <!----------------Custom CSS-------------------------->
     <link rel="stylesheet" href="asset/css/style.css" />
-
+    <!-----------Sweet Alert-------------------->
+    <script src="/asset/js/sweetalert.js"></script>
     <link rel="shortcut icon" href="asset/images/favicon.ico" type="image/x-icon" />
     <!--=============== REMIXICONS ===============-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" />
@@ -124,49 +125,19 @@
       </div>
     </nav>
 
-
-    
     <!--==================== SEARCH ====================-->
     <div class="search" id="search">
-      <form action="" class="search__form">
+      <form action="" class="search__form" style="margin-bottom: 20px;">
         <i class="fa-solid fa-magnifying-glass search__icon"></i>
         <input type="search" placeholder="What are you looking for?" class="search__input" id="live_search" autocomplete="off" />
         <button type="reset">&times;</button>
-         
       </form>
+      <div id="searchresult" style="height: auto;">
 
-      <div id="searchresult"></div>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-      <script type="text/javascript">
-      $(document).ready(function(){
-         
-      $("#live_search").keyup(function(){
-         var input=$(this).val();
-         if(input !=""){
-          $.ajax({
-            url:"searchshow.php",
-            method:"POST",
-            data:{input:input},
-
-            success:function(data){
-              $("#searchresult").html(data);
-            }
-          });
-         }else{
-          $("#searchresult").css("display", "none");
-         }
-      });
-
-    });
-     </script>
-    
-    <i class="fa-solid fa-x search__close" id="search-close"></i>
+      </div>
+      <i class="fa-solid fa-x search__close" id="search-close"></i>
     </div>
-
-    
-
   </header>
-
   <div class="cartTab">
     <h1>Your Cart</h1>
     <div class="listCart">
@@ -187,27 +158,81 @@
             echo '<div class="price">' . $row['price'] . '<b>৳</b></div>';
           }
           echo '
-              <div class="quantity">
-                  <span class="minus"><strong> - </strong></span>
-                  <span>1</span>
-                  <span class="plus"><strong> + </strong></span>
+                <div class="quantity">
+                  <form action="" method="post">
+                  <input type="hidden" name="product_id" value="' . $row['product_id'] . '">
+                    <button type="submit" name="delete" style="background-color: transparent;">
+                        <i class="ri-delete-bin-2-fill deleteCart"></i>
+                    </button>
+                  </form>
                 </div><br>
             </div>
             ';
         }
       }
+      if (isset($_POST['delete'])) {
+        $productIdToDelete = $_POST['product_id'];
+
+        // Find the index of the product in the cart array
+        $index = array_search($productIdToDelete, $_SESSION['cart']);
+
+        // Remove the product from the cart array
+        if ($index !== false) {
+          unset($_SESSION['cart'][$index]);
+          echo '
+                <script>
+                    swal({
+                        title: "Removed!",
+                        text: "Product removed from cart!",
+                        icon: "success",
+                        button: "Ok!",
+                    });
+                </script>
+                ';
+        }
+
+        // Optional: Redirect back to the cart page or update the page content
+        //echo '<script>location.reload(); </script>';
+        //exit();
+      }
+
+
       ?>
-
-
-
     </div>
     <div class="btnn">
       <button class="closee">Close</button>
       <button class="checkOut_btn"><a href="checkout.php" style="color: white;">Check Out</a></button>
     </div>
   </div>
+  <!----------JQuery Library---------->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <!-----------------JS For Live Search---------------->
+  <script type="text/javascript">
+    $(document).ready(function() {
 
+      $("#live_search").keyup(function() {
+        var input = $(this).val();
+        if (input != "") {
+          $.ajax({
+            url: "searchshow.php",
+            method: "POST",
+            data: {
+              input: input
+            },
+
+            success: function(data) {
+              $("#searchresult").html(data);
+            }
+          });
+        } else {
+          $("#searchresult").css("display", "none");
+        }
+      });
+    });
+  </script>
+  <!-----------Custom JS--------------------->
   <script src="/asset/js/nav.js"></script>
+  <script src="/asset/js/script.js"></script>
 </body>
 
 </html>

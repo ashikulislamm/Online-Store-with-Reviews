@@ -105,6 +105,15 @@ main {
   margin-top: 100px;
 }
 /*=============== REUSABLE CSS CLASSES ===============*/
+.deleteCart{
+  font-size: 20px;
+  color: white;
+  transition: 0.4s;
+}
+.deleteCart:hover{
+  color: var(--second-color);
+  cursor: pointer;
+}
 th,
 td {
   padding: 15px;
@@ -134,10 +143,11 @@ td {
   z-index: var(--z-modal);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px); /* For safari */
-  padding: 8rem 1.5rem 0;
+  padding: 4rem 1.5rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s;
+  overflow-y: scroll;
 }
 .formbox {
   /*height: 100%;*/
@@ -153,9 +163,9 @@ td {
 .search__close,
 .login__close {
   position: absolute;
-  top: 2rem;
+  top: 1rem;
   right: 2rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: var(--title-color);
   cursor: pointer;
 }
@@ -839,6 +849,7 @@ tr:hover {
   text-align: center;
   align-items: center;
 }
+
 .listCart .quantity span {
   display: inline-block;
   width: 25px;
