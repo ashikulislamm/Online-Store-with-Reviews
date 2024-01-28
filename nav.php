@@ -138,6 +138,8 @@
       <i class="fa-solid fa-x search__close" id="search-close"></i>
     </div>
   </header>
+
+
   <div class="cartTab">
     <h1>Your Cart</h1>
     <div class="listCart">
@@ -190,13 +192,10 @@
                 </script>
                 ';
         }
-
         // Optional: Redirect back to the cart page or update the page content
         //echo '<script>location.reload(); </script>';
         //exit();
       }
-
-
       ?>
     </div>
     <div class="btnn">

@@ -284,10 +284,10 @@
             <a href="/index.php">About Us</a>
           </li>
           <li>
-            <a href="#">Products</a>
+            <a href="/product.php">Products</a>
           </li>
           <li>
-            <a href="#">On Sale</a>
+            <a href="/on_sale.php">On Sale</a>
           </li>
           <li>
             <a href="#">Blog</a>
