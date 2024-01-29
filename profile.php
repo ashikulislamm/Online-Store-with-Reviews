@@ -31,6 +31,7 @@
         $row = mysqli_fetch_assoc($result);
         
         $wishlist_result = mysqli_query($con, "SELECT * FROM wishlist WHERE user_id='$_SESSION[id]'");
+        $order_result = mysqli_query($con,"SELECT * FROM orders WHERE users_id='$_SESSION[id]' ")or die("Select Error");
         if ($wishlist_result && mysqli_num_rows($wishlist_result) > 0) {
             echo '
             <main class="main">
@@ -87,7 +88,29 @@
                 </div>
             </form>
                     </div>
-                    <div class="det" id="orders">This is Orders Section</div>
+                    <div class="det" id="orders">
+                    <h3>Your Wishlist</h3>
+                    <table>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Order Date</th>
+                            <th>Order Amount</th>
+                        </tr>';
+                
+                        while ( $row3 = mysqli_fetch_assoc($order_result)) {
+                           
+                            echo '
+                            <tr>
+                                <td>' . $row3["order_id"] . '</td>
+                                <td>' .$row3["order_date"]. '</td>
+                                <td>' . $row3["amount"] . '</td>
+                            </tr>';
+                        }
+                        echo '
+                        </table>
+                    
+                    
+                    </div>
                     <div class="det" id="wishlist">
                     <h3>Your Wishlist</h3>
                     <table>

@@ -35,6 +35,7 @@ create table products(
 );
 
 use online_store_with_review;
+
 insert into products(product_id,catagory,brand,product_name,product_descr,price,stock_status,product_photo) values(1006,"Smartwatch"," Zeblaze","Zeblaze Stratos 2","Zeblaze Stratos 2 GPS Smart Watch AMOLED Display has 1.3″ Always-on AMOLED Display, Accurate Built-in GPS, 24H Health Management and Water Resistant 5 ATM. Get free shipping on orders over 2500 BDT from Vibe Gaming.",8750,29,"Zeblaze-Stratos-2.png");
 
 
@@ -142,7 +143,7 @@ insert into review(product_id,users_id,descript) values(2001,3,"Nice product but
 use online_store_with_review;
 select* from review;
 
-
+use online_store_with_review;
 insert into products(product_id,catagory,brand,product_name,product_descr,price,stock_status,product_photo) values(1001,"Smartwatch","Zeblaze","ZEBLAZE VIBE 7 ","Zeblaze VIBE 7 Bluetooth Calling Smartwatch has Large 1.39″ HD Color Display, Voice Calling via Bluetooth®, Easy 24/7 Health Management, 100+ Built-in Workout Modes and Up to 25 days of Battery Life. Get free shipping on orders over 2500 BDT from Vibe Gaming.",3450,25,"zeblaze_vibe_7.png");
 insert into products(product_id,catagory,brand,product_name,product_descr,price,stock_status,product_photo) values(1002,"Smartwatch","Amazfit","Amazfit T-Rex","Amazfit T-Rex, Unleash Your Instinct with 12 Military Certifications and Rugged Body which has 20-day Battery Life and AMOLED Display.",10790,15,"amazfit_t_rex.png");
 insert into products(product_id,catagory,brand,product_name,product_descr,price,stock_status,product_photo) values(1003,"Smartwatch","Amazfit","Amazfit Bip U Pro"," Amazfit Bip U Pro Smart Watch is your first into smart fitness. It’s the perfect combination of classic design and modern features",5290,22,"amazfit_bip_u_pro.png");
