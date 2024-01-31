@@ -8,7 +8,9 @@
 
     <!----------------Custom CSS-------------------------->
     <link rel="stylesheet" href="asset/css/style.css" />
-
+    <!-----------Sweet Alert-------------------->
+    <script src="/asset/js/sweetalert.js"></script>
+    <!-----------Favicon---------------->
     <link rel="shortcut icon" href="asset/images/favicon.ico" type="image/x-icon" />
 
     <!-------------------BootStrap CSS------------------->
@@ -29,20 +31,20 @@
     if (isset($_SESSION['id'])) {
         $result = mysqli_query($con, "SELECT * FROM user WHERE user_id='$_SESSION[id]'") or die("Select Error");
         $row = mysqli_fetch_assoc($result);
-        
+
         $wishlist_result = mysqli_query($con, "SELECT * FROM wishlist WHERE user_id='$_SESSION[id]'");
-        $order_result = mysqli_query($con,"SELECT * FROM orders WHERE users_id='$_SESSION[id]' ")or die("Select Error");
-        if ($wishlist_result && mysqli_num_rows($wishlist_result) > 0) {
-            echo '
+        $order_result = mysqli_query($con, "SELECT * FROM orders WHERE users_id='$_SESSION[id]' ") or die("Select Error");
+        echo '
             <main class="main">
          <div class="container">
-            <h1 style="text-align: center; margin-bottom: 30px;">Welcome ,' . $row['user_name'] . '</h1>
+            <h1 class="greet">Welcome ,' . $row['user_name'] . '</h1>
             <div class="profileDiv">
                 <div class="left">
                     <div class="user-profile">
                         <div class="avatar">
                             <img src="/asset/images/user.png" alt="" width="100px">
                         </div>
+                        <!-----------------User Info------------------->
                         <div class="info">
                             <p><b>Name</b> : ' . $row['user_name'] . '</p>
                             <p><b>Email</b> : ' . $row['email'] . '</p>
@@ -61,7 +63,7 @@
                 </div>
                 <div class="profile-details">
                     <div class="det" id="account">
-                    <form action="" class="login__form" method="post">
+                <form action="" class="profile__form" method="post">
                 <h2 class="login__title">Update Information</h2>
 
                 <div class="login__group">
@@ -84,129 +86,68 @@
                 </div>
 
                 <div>
-                    <button type="submit" class="login__button" name="update">Update</button>
+                    <button type="submit" class="login__button profile_update" name="update">Update</button>
                 </div>
             </form>
                     </div>
                     <div class="det" id="orders">
-                    <h3>Your Orders</h3>
-                    <table>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Order Date</th>
-                            <th>Order Amount</th>
-                        </tr>';
-                
-                        while ( $row3 = mysqli_fetch_assoc($order_result)) {
-                           
-                            echo '
-                            <tr>
-                                <td>' . $row3["order_id"] . '</td>
-                                <td>' .$row3["order_date"]. '</td>
-                                <td>' . $row3["amount"] . '</td>
-                            </tr>';
-                        }
-                        echo '
-                        </table>
-                    
-                    
-                    </div>
-                    <div class="det" id="wishlist">
-                    <h3>Your Wishlist</h3>
-                    <table>
-                        <tr>
-                            <th>Product</th>
-                            <th>Price</th>
-                        </tr>';
-                
-                        while ( $row2 = mysqli_fetch_assoc($wishlist_result)) {
-                           
-                            //$p_id = null;
-                            $p_id = $row2["products_id"];
-                            $product_result = mysqli_query($con, "SELECT * FROM products WHERE product_id='$p_id'");
-                            $product_row = mysqli_fetch_assoc($product_result);
-
-                            echo '
-                            <tr>
-                                <td>' . $product_row["product_name"] . '</td>
-                                <td>' . $product_row["price"] . '</td>
-                            </tr>';
-                        }
-                        echo '
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>';
-
-        } else {
-            echo '
-            <main class="main">
-        <div class="container">
-            <h1 style="text-align: center; margin-bottom: 30px;">Welcome ,' . $row['user_name'] . '</h1>
-            <div class="profileDiv">
-                <div class="left">
-                    <div class="user-profile">
-                        <div class="avatar">
-                            <img src="/asset/images/user.png" alt="" width="100px">
+                    <h3>Your Orders</h3>';
+                    //Code for Showing orders
+        if ($order_result && mysqli_num_rows(($order_result)) > 0) {
+            while ($row3 = mysqli_fetch_assoc($order_result)) {
+                echo '
+                    <div class="listCart">
+                        <div class="orders">
+                            <div class="orderId">Order#' . $row3["order_id"] . '</div>
+                            <div class="amount">' . $row3["amount"] . '<b>৳</b></div>
+                            <div class="orderDate">' .$row3["order_date"]. '</div>
+                            <div class="orderDetails">
+                                <a href="orderDetails.php?id=' . $row3['order_id'] . '">Order Details</a>
+                            </div><br>
                         </div>
-                        <div class="info">
-                            <p><b>Name</b> : ' . $row['user_name'] . '</p>
-                            <p><b>Email</b> : ' . $row['email'] . '</p>
-                            <p><b>Number</b> : ' . $row['user_number'] . '</p>
-                            <p><b>Active Orders</b> : ' . $row['active_orders'] . '</p>
-                            <address><strong>Address</strong> : ' . $row['user_address'] . '</address>
-                        </div>
-                    </div>
-                    <div class="profileBtns">
-                        <ul class="btnList">
-                            <li id="accountBtn">Account</li>
-                            <li id="ordersBtn">Orders</li>
-                            <li id="wishlistBtn">Wishlist</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="profile-details">
-                    <div class="det" id="account">
-                    <form action="" class="login__form" method="post">
-                <h2 class="login__title">Update Information</h2>
-
-                <div class="login__group">
-                    <div>
-                        <input type="text" placeholder="Write your name" id="fname" class="login__input" name="Name" value="' . $row['user_name'] . '" />
-                    </div>
-                    <div>
-                        <input type="tel" id="phone" name="phone" placeholder="Enter your telephone number" class="login__input" value="' . $row['user_number'] . '" pattern="[0-9]{11}">
-                    </div>
-                    <div>
-                        <input type="text" placeholder="Write your Address" id="phone" class="login__input" value="' . $row['user_address'] . '" name="Address"/>
-                    </div>
-                    <div>
-                        <input type="email" placeholder="Write your email" id="email" class="login__input" value="' . $row['email'] . '" name="email"/>
-                    </div>
-
-                    <div>
-                        <input type="text" placeholder="Enter your password" id="password" class="login__input" value="' . $row['user_password'] . '"  name="password"/>
-                    </div>
-                </div>
-
-                <div>
-                    <button type="submit" class="login__button" name="update">Update</button>
-                </div>
-            </form>
-                    </div>
-                    <div class="det" id="orders">This is Orders Section</div>
-                    <div class="det" id="wishlist">
-                    <h3>No products in your wishlist</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>';
+                    </div>';
+            }
         }
 
-
+        echo '
+                </div>
+                <div class="det" id="wishlist">
+                    <h3>Your Wishlist</h3>
+                    <div class="listProduct wishlist">';
+                    //Code for Showing Wishlist
+        if ($wishlist_result && mysqli_num_rows($wishlist_result) > 0) {
+            while ($row2 = mysqli_fetch_assoc($wishlist_result)) {
+                //$p_id = null;
+                $p_id = $row2["products_id"];
+                $product_result = mysqli_query($con, "SELECT * FROM products WHERE product_id='$p_id'");
+                $product_row = mysqli_fetch_assoc($product_result);
+                echo '<div class="item" data-id="1">
+                        <img src="/asset/images/products/' . $product_row['product_photo'] . '" alt="">
+                        <a href="productDetail.php?id=' . $product_row['product_id'] . '" class="product_name">
+                            <h2>' . $product_row['product_name'] . '</h2>
+                        </a>
+                        <span></span>
+                        <div class="product_actions">';
+                if ($product_row["offer_price"] > 0) {
+                    echo '<div class="price"><strike>' . $product_row['price'] . '<b>৳</b></strike></div>';
+                    echo '<div class="price">' . $product_row['offer_price'] . '<b>৳</b></div>';
+                } else {
+                    echo '<div class="price">' . $product_row['price'] . '<b>৳</b></div>';
+                }
+                echo '
+                        </div>
+                    </div>';
+            }
+        } else {
+            echo 'No Products In Wishlist';
+        }
+        echo '
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </main>';
         //Code for updating data
         if (isset($_POST['update'])) {
             $user_email = null;
@@ -220,24 +161,45 @@
 
             if (mysqli_num_rows($verify_query1) < 1 || $user_email == $email) {
                 mysqli_query($con, "UPDATE user SET user_name ='$username', user_number='$phoneNo',email='$email',user_password='$password',user_address='$address' WHERE user_id='$_SESSION[id]'");
-                echo '<script>window.location="successful.php"</script>';
-                exit();
+                echo '
+                <script>
+                    swal({
+                        title: "Profile Updated!",
+                        text: "Refresh the Page to view updated Info",
+                        icon: "success",
+                        button: "Ok!",
+                    });
+                </script>
+                ';
             } else {
-                echo '<script>window.location="emailconfig.php"</script>';
-                exit();
+                echo '
+                <script>
+                    swal({
+                        title: "Email Alreday in Use!",
+                        text: "Try again with another email",
+                        icon: "error",
+                        button: "Ok!",
+                    });
+                </script>
+                ';
             }
         }
     } else {
-        echo "<div class='message'>
-                <h5>Please Login to view your profile </h5><br>
-                <a href='login.php' class='nested-button-link'><button class='nested-button'>Login</button></a>
-                </div> <br>";
+        echo '
+                <script>
+                    swal({
+                        title: "Login First!",
+                        text: "Please Login to view your Profile",
+                        icon: "error",
+                        button: "Ok!",
+                    });
+                </script>
+                ';
     }
-
-
     ?>
     <?php include 'footer.php'; ?>
     <script src="/asset/js/profile.js"></script>
+    <script src="/asset/js/script.js"></script>
 </body>
 
 </html>

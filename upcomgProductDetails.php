@@ -136,7 +136,7 @@
 
     <?php
     //Add Products to Wishlist
-    if (isset($_POST['wishlist'])) {
+    /*if (isset($_POST['wishlist'])) {
         if (isset($_SESSION['id']) && $_SESSION['id'] != null) {
             $product_id = isset($_GET['id']) ? $_GET['id'] : null;
             $user_id = $_SESSION['id'];
@@ -167,7 +167,7 @@
                 </script>
                 ';
         }
-    }
+    }*/
     ?>
 
 

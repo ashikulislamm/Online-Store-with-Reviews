@@ -118,7 +118,7 @@
 //chckout work done here//
 $amount =  $totalPrice;
 $order_date = date("Y-m-d");
-$order_status = "on hold";
+$order_status = "Confirmed";
 $payment_status = "";
 $user_id = $_SESSION['id'];
 
