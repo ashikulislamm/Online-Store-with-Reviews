@@ -44,7 +44,7 @@
                 $_SESSION['user_address'] = $row['user_address'];
                 $_SESSION['active_orders'] = $row['active_orders'];
                 $_SESSION['user_id'] = $row['user_id'];
-            } else { 
+            } else {
                 echo '
                 <script>
                     swal({
@@ -96,6 +96,7 @@
     <!--Footer Section-->
 
     <?php include 'footer.php'; ?>
+    <script src="/asset/js/script.js"></script>
 </body>
 
 </html>

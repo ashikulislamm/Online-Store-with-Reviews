@@ -89,7 +89,7 @@
             </form>
                     </div>
                     <div class="det" id="orders">
-                    <h3>Your Wishlist</h3>
+                    <h3>Your Orders</h3>
                     <table>
                         <tr>
                             <th>Order ID</th>

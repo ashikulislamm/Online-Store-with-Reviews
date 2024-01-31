@@ -9,8 +9,8 @@
   /*Color mode HSL(hue, saturation, lightness)*/
   /*hsl(230, 75%, 56%)*/
   --first-color: hsl(176, 90%, 31%);
-  --second-color : #fb8001;
-  --second--color-light: #f1973d;
+  --second-color: #fb8001;
+  --second--color-light: #f3a85c;
   --title-color: hsl(230, 75%, 15%);
   --text-color: hsl(230, 12%, 40%);
   --body-color: hsl(230, 100%, 98%);
@@ -41,7 +41,10 @@
     --normal-font-size: 1rem;
   }
 }
-
+.our_team{
+  margin-top: 80px;
+  margin-bottom: 10px !important;
+}
 /*=============== BASE ===============*/
 
 .title {
@@ -105,12 +108,12 @@ main {
   margin-top: 100px;
 }
 /*=============== REUSABLE CSS CLASSES ===============*/
-.deleteCart{
+.deleteCart {
   font-size: 20px;
   color: white;
   transition: 0.4s;
 }
-.deleteCart:hover{
+.deleteCart:hover {
   color: var(--second-color);
   cursor: pointer;
 }
@@ -169,11 +172,11 @@ td {
   color: var(--title-color);
   cursor: pointer;
 }
-.seeAllBtn{
+.seeAllBtn {
   margin-bottom: 20px;
   text-align: center;
 }
-.seeAll{
+.seeAll {
   background-color: var(--first-color);
   width: 100%;
   color: #fff;
@@ -181,9 +184,9 @@ td {
   padding: 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
-  transition:  0.4s;
+  transition: 0.4s;
 }
-.seeAll:hover{
+.seeAll:hover {
   color: white;
   box-shadow: 0 2px 16px hsla(230, 75%, 32%, 0.15);
 }
@@ -191,7 +194,7 @@ td {
 .carousel-indicators .active {
   background-color: var(--second-color) !important;
 }
-.carousel-indicators button{
+.carousel-indicators button {
   background-color: var(--first-color) !important;
 }
 .header {
@@ -238,7 +241,7 @@ td {
 :is(.nav__logo, .nav__search, .nav__login, .nav__toggle, .nav__link):hover {
   color: var(--first-color);
 }
-.carousel{
+.carousel {
   margin-top: 90px;
 }
 @media screen and (max-width: 1023px) {
@@ -253,7 +256,7 @@ td {
     transition: top 0.4s;
     z-index: var(--z-fixed);
   }
-  .carousel{
+  .carousel {
     margin-top: 60px;
   }
 }
@@ -396,7 +399,7 @@ td {
 }
 
 .login__button:hover {
-  box-shadow: 0px 0px 15px 1px rgba(8,150,141,0.4);
+  box-shadow: 0px 0px 15px 1px rgba(8, 150, 141, 0.4);
 }
 /* For medium devices */
 @media screen and (min-width: 576px) {
@@ -448,7 +451,6 @@ td {
   }
 }
 /* Navigation for mobile devices */
-
 
 /* Show login 
 .show-login {
@@ -924,14 +926,14 @@ tr:hover {
   letter-spacing: 4px;
   margin-bottom: 10px;
 }
-.instock{
+.instock {
   font-weight: bold;
   font-size: medium;
   letter-spacing: 2px;
   margin-bottom: 10px;
   color: green;
 }
-.outstock{
+.outstock {
   font-weight: bold;
   font-size: medium;
   letter-spacing: 2px;
@@ -1026,48 +1028,47 @@ tr:hover {
   }
 }
 
-
 /*======================Featured Catagory========================*/
 
-.category-card{
+.category-card {
   border-radius: 1rem;
   box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
   margin-bottom: 24px;
   background-color: #fff;
   padding: 10px;
 }
-.category-card a{
+.category-card a {
   text-decoration: none;
 }
-.category-card .category-card-img{
+.category-card .category-card-img {
   max-height: 200px;
   overflow: hidden;
 }
-.category-card .category-card-img img{
+.category-card .category-card-img img {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 30%;
 }
-.category-card:hover .category-card-body a{
+.category-card:hover .category-card-body a {
   color: #fb8001;
 }
-.category-card .category-card-body{
+.category-card .category-card-body {
   text-align: center;
   padding: 10px 16px;
 }
-.category-card .category-card-body a{
+.category-card .category-card-body a {
   margin-bottom: 0px;
   font-size: 18px;
   font-weight: 600;
   color: #000;
-  
+
   font-family: var(--body-font);
   transition: 0.4s;
 }
 
 /*=================Checkout==================*/
-.checkout{
+.checkout {
   margin-top: 100px;
 }
 .checkout_row {
@@ -1105,7 +1106,7 @@ tr:hover {
   padding: 0 16px;
 }
 
-input[type=text] {
+input[type="text"] {
   width: 100%;
   margin-bottom: 20px;
   padding: 12px;
@@ -1138,11 +1139,156 @@ span.price {
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
 @media (max-width: 800px) {
-  .payment_row{
+  .payment_row {
     flex-direction: column;
   }
 
   .col-25 {
-      margin-bottom: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+/*=================Infinite Carousel==================*/
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
+.slider {
+  height: 110px;
+  
+  overflow: hidden;
+  position: relative;
+  width: 80%;
+}
+
+.slider .slide-track {
+  -webkit-animation: scroll 30s linear infinite;
+  animation: scroll 30s linear infinite;
+  display: flex;
+  width: calc(250px * 14);
+}
+
+.slider .slide {
+  height: 100px;
+  width: 250px;
+}
+
+.slider .slide img {
+  width: 80%;
+  height: 50px;
+  border-radius: 10px;
+}
+
+@-webkit-keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
+
+/*=================About Us==================*/
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2em 1rem;
+  
+}
+.column {
+  width: 100%;
+  padding: 0.5em 0;
+  transition: .5s;
+}
+.info{
+  text-align: center;
+}
+h1 {
+  width: 100%;
+  font-size: 3.5em;
+  color: #1f003b;
+}
+.card {
+  box-shadow: 0 0 2.4em rgba(25, 0, 58, 0.1);
+  padding: 3.5em 1em;
+  border-radius: 0.6em;
+  color: #1f003b;
+  cursor: pointer;
+  transition: 0.5s;
+  background-color: #ffffff;
+}
+.card .img-container {
+  width: 8em;
+  height: 8em;
+  background-color: var(--second--color-light);
+  padding: 0.5em;
+  border-radius: 50%;
+  margin: 0 auto 2em auto;
+}
+.card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.card h3 {
+  font-weight: 500;
+}
+.card p {
+  font-weight: 300;
+  text-transform: uppercase;
+  margin: 0.5em 0 2em 0;
+  letter-spacing: 2px;
+}
+.icons {
+  width: 50%;
+  min-width: 180px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+}
+.card a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.4em;
+}
+.card i:hover {
+  transition: 0.5s;
+  color: var(--second-color);
+}
+.card:hover {
+  background: var(--first-color);
+  color: #ffffff;
+}
+.card:hover .img-container {
+  transform: scale(1.15);
+}
+@media screen and (min-width: 768px) {
+  section {
+    padding: 1em 7em;
+  }
+}
+@media screen and (min-width: 992px) {
+  section {
+    padding: 1em;
+  }
+  .card {
+    padding: 5em 1em;
+  }
+  .column {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    padding: 0 1em;
   }
 }

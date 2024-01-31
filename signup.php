@@ -96,6 +96,7 @@
     </div>
     <!--Footer Section-->
     <?php include 'footer.php'; ?>
+    <script src="/asset/js/script.js"></script>
 </body>
 
 </html>

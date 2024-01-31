@@ -4,25 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Online Store with Reviews</title>
-
   <!----------------Custom CSS-------------------------->
   <link rel="stylesheet" href="asset/css/style.css" />
-
+  <!----------------Favicon-------------------------->
   <link rel="shortcut icon" href="asset/images/favicon.ico" type="image/x-icon" />
-
   <!-------------------BootStrap CSS------------------->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <!--Font Awsome-->
+  <!-------------------Font Awsome---------------------------->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <!------------------------------------------------------------------------------------------------------->
 
 <body>
-  <!--Header Section-->
+  <!------------------Header Section------------------------->
   <?php include 'nav.php'; ?>
-
-  <!--Main Section-->
+  <!---------------------Main Section--------------------------->
 
   <!------------------Slider----------------->
   <div id="carouselExampleIndicators" class="carousel slide carousel-fade">
@@ -30,16 +27,20 @@
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active indicator" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" class="indicator"></button>
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" class="indicator"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4" class="indicator"></button>
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="/asset/images/banner/main_banner.jpg" class="d-block w-100" alt="...">
+        <img src="/asset/images/banner/main_banner.png" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
         <img src="/asset/images/banner/banner2.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
         <img src="/asset/images/banner/banner5.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="/asset/images/banner/watch1.jpg" class="d-block w-100" alt="...">
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -142,6 +143,49 @@
     <div class="seeAllBtn">
       <a href="product.php" class="seeAll">See All Products</a>
     </div>
+    <!------------------Infinite Slider----------------->
+    <h1 class="title">Brand Partners</h1>
+    <div class="wrapper">
+      <div class="slider">
+        <div class="slide-track">
+
+          <!-- Img Code -->
+          <div class="slide">
+            <img src="/asset/images/slider/amazfit.png" />
+          </div>
+
+          <div class="slide">
+            <img src="/asset/images/slider/Fitbit.png" />
+          </div>
+
+          <div class="slide">
+            <img src="/asset/images/slider/kiselect.png" />
+          </div>
+
+          <div class="slide">
+            <img src="/asset/images/slider/kospet.png" />
+          </div>
+
+          <div class="slide">
+            <img src="/asset/images/slider/mibro.png" />
+          </div>
+
+          <div class="slide">
+            <img src="/asset/images/slider/Samsung.png" />
+          </div>
+
+          <div class="slide">
+            <img src="/asset/images/slider/Xiaomi.png" />
+          </div>
+
+          <div class="slide">
+            <img src="/asset/images/slider/zeblaze.png" />
+          </div>
+          <!-- Img Code End -->
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <!-------Footer Section---------->

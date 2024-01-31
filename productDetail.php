@@ -27,8 +27,8 @@
     <div class="container">
         <div class="title">Product Detail</div>
         <?php include 'config.php';
-        //Dsplay the Product details
 
+        //Dsplay the Product details
         $productId = isset($_GET['id']) ? $_GET['id'] : null;
         $result = mysqli_query($con, "SELECT * FROM products WHERE product_id = $productId");
         $row = $result->fetch_assoc();
@@ -105,9 +105,23 @@
         if (isset($_SESSION['id']) && $_SESSION['id'] != null) {
             $product_id = isset($_GET['id']) ? $_GET['id'] : null;
             $user_id = $_SESSION['id'];
-            $sql = "INSERT INTO wishlist (user_id, products_id) VALUES ('$user_id', '$product_id')";
-            if ($con->query($sql) === TRUE) {
+            $checkquery = "SELECT * FROM wishlist WHERE user_id = $user_id AND products_id = $product_id ";
+            $checkresult = mysqli_query($con, $checkquery);
+            if ($checkresult->num_rows > 0) {
                 echo '
+                <script>
+                    swal({
+                        title: "Cannot Add to Wishlist!",
+                        text: "Product is Already in your Wishlist",
+                        icon: "warning",
+                        button: "Ok!",
+                    });
+                </script>
+                ';
+            } else {
+                $sql = "INSERT INTO wishlist (user_id, products_id) VALUES ('$user_id', '$product_id')";
+                if ($con->query($sql) === TRUE) {
+                    echo '
                 <script>
                     swal({
                         title: "Added to wishlist!",
@@ -117,8 +131,9 @@
                     });
                 </script>
                 ';
-            } else {
-                echo "Error: " . $sql . "<br>" . $con->error;
+                } else {
+                    echo "Error: " . $sql . "<br>" . $con->error;
+                }
             }
         } else {
             echo '

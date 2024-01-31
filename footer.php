@@ -115,7 +115,7 @@
 
     .footer__navvv li a:hover {
       transition: 0.5s;
-      color: hsl(230, 75%, 56%);
+      color: hsl(176, 90%, 31%);
     }
 
     .navvv__ul a {
@@ -190,7 +190,7 @@
       align-items: center;
     }
 
-    .subs .left img{
+    .subs .left img {
       border-radius: 20px;
     }
 
@@ -281,7 +281,7 @@
 
         <ul class="navvv__ul">
           <li>
-            <a href="/index.php">About Us</a>
+            <a href="/index.php">Home</a>
           </li>
           <li>
             <a href="/product.php">Products</a>
@@ -290,7 +290,7 @@
             <a href="/on_sale.php">On Sale</a>
           </li>
           <li>
-            <a href="#">Blog</a>
+            <a href="/about_us.php">About Us</a>
           </li>
         </ul>
       </li>
