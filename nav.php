@@ -43,7 +43,7 @@
           </li>
 
           <li class="nav__item">
-            <a href="#" class="nav__link">Blog</a>
+            <a href="news.php" class="nav__link">Blog</a>
           </li>
 
           <li class="nav__item">

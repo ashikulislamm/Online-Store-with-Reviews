@@ -19,7 +19,7 @@
 <body>
   <!------------------Header Section------------------------->
   <?php include 'nav.php'; ?>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br>
   <section>
     <div class="row">
       <h1 class="title our_team">Meet Our Team Members</h1>
