@@ -131,9 +131,10 @@ create table review(
     review_id int not null auto_increment primary key,
     product_id int not null,
     foreign key (product_id) references products(product_id),
-     users_id int ,
-    foreign key(users_id) references user(user_id),
-    descript varchar(400)
+    descript varchar(400),
+    user_name varchar(100),
+    rating int,
+    date_time  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
 );
 

@@ -22,6 +22,7 @@
     <!--Header Section-->
 
     <?php include 'nav.php'; ?>
+    
     <?php
     include 'config.php';
     $orderId = isset($_GET['id']) ? $_GET['id'] : null;
@@ -32,7 +33,7 @@
     //$orderDetailrow = $orderDetailssql->fetch_assoc();
     $deliverycharge = 60;
     ?>
-    <br><br><br><br><br><br>
+    
     <div class="container">
         <!-----------Order Details--------------------->
         <div class="ordertitle">
@@ -96,12 +97,16 @@
         </div>
 
         <!-----------------Order tracking--------------------->
+        <?php
+        $date = date('Y-m-d', strtotime($orderrow['order_date']));
+        $expected_date = date('Y-m-d', strtotime($date . ' + 3 days'));
+         ?>
         <div class=" mb-3">
             <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking Order </span><span class="text-medium"></span></div>
             <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2">
                 <div class="w-100 text-center py-1 px-2"><span class="text-medium">Shipped Via:</span> Redex</div>
                 <div class="w-100 text-center py-1 px-2"><span class="text-medium">Status:</span> <?php echo $orderrow['order_status'] ?></div>
-                <div class="w-100 text-center py-1 px-2"><span class="text-medium">Expected Date:</span> SEP 09, 2017</div>
+                <div class="w-100 text-center py-1 px-2"><span class="text-medium">Expected Date:</span> <?php echo $expected_date ?></div>
             </div>
             <div class="card-body">
                 <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">

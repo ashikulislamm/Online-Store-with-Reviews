@@ -82,7 +82,7 @@
                     <ul class="dropdown__menu">
                       <li class="dropdown__item">
                         <i class="ri-user-line dropdown__icon"></i>
-                        <span class="dropdown__name"><a href="profile.php" class="nav__link">My Account</a></span>
+                        <span class="dropdown__name"><a href="profile.php" class="nav__link">Account</a></span>
                       </li>
         
                       <li class="dropdown__item">
@@ -95,7 +95,7 @@
           echo '<div class="dropdown" id="dropdown-content">
                     <button class="dropdown__button" id="dropdown-button">
                       <i class="ri-user-3-line dropdown__icon"></i>
-                      <span class="dropdown__name">My profile</span>
+                      <span class="dropdown__name">Account</span>
         
                       <div class="dropdown__icons">
                         <i class="ri-arrow-down-s-line dropdown__arrow"></i>

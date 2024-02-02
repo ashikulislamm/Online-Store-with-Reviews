@@ -31,7 +31,7 @@
           <div class="img-container">
             <img src="/asset/images/us/dona.jpg" />
           </div>
-          <div class="info">
+          <div class="us_info">
             <h3>Afia Fahmida</h3>
             <p>ID : 20210104032</p>
           </div>
@@ -54,7 +54,7 @@
           <div class="img-container">
             <img src="/asset/images/us/ashik.jpg" />
           </div>
-          <div class="info">
+          <div class="us_info">
             <h3>Ashikul Islam</h3>
             <p>ID : 20210104040</p>
           </div>
@@ -77,7 +77,7 @@
           <div class="img-container">
             <img src="/asset/images/us/zenun.jpg" />
           </div>
-          <div class="info">
+          <div class="us_info">
             <h3>Zenun Chowdhury</h3>
             <p>ID : 20210104047</p>
           </div>
