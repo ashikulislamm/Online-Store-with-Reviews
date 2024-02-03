@@ -140,6 +140,8 @@ create table review(
 
 use online_store_with_review;
 insert into review(product_id,users_id,descript) values(2001,3,"Nice product but less available");
+insert into review(product_id,users_id,descript) values(2002,1,"Very Useful!!!");
+insert into review(product_id,users_id,descript) values(2003,2,"I'm genuinely satisfied.");
 
 use online_store_with_review;
 select* from review;
