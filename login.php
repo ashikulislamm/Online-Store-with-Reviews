@@ -71,7 +71,7 @@
             <div class="login__group">
                 <div>
                     <label for="email" class="login__label">Email</label>
-                    <input type="email" required placeholder="Write your email" id="email" class="login__input" name="email" />
+                    <input type="email" required placeholder="Write your email" id="email" class="login__input" name="email"/>
                 </div>
 
                 <div>
