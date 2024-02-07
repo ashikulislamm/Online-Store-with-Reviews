@@ -1077,6 +1077,7 @@ main {
   .detail .name {
     font-size: x-large;
     margin: 0;
+    margin-bottom: 10px;
   }
   .detail .buttons button {
     font-size: small;
@@ -1084,6 +1085,15 @@ main {
   .detail .buttons form {
     justify-content: center;
   }
+  .content{
+    margin-top: 50px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .detail .image img {
+    left: 10%;
+  }
+  
 }
 
 /*======================Featured Catagory========================*/
@@ -1536,4 +1546,36 @@ td {
 }
 .rcard{
   background: white;
+}
+.progress-label-left {
+  float: left;
+  margin-right: 0.5em;
+  line-height: 1em;
+}
+.progress-label-right {
+  float: right;
+  margin-left: 0.3em;
+  line-height: 1em;
+}
+.contentCard{
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+@media screen and (max-width: 768px) {
+  .title {
+    margin-top: 70px;
+  }
+  .contentCard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+}
+@media screen and (max-width: 576px) {
+  .contentCard {
+    text-align: center;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
 }
