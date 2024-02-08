@@ -78,7 +78,7 @@
     <br><br><br>
     <?php
 
-    $api_key = 'd251fdab76094c489aab3481214fb4b2';
+    $api_key = '';
     $api_url = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=' . $api_key;
 
 
