@@ -21,8 +21,7 @@
 <body>
     <!--Header Section-->
 
-    <?php include 'nav.php';
-    ?>
+    <?php include 'nav.php'; ?>
 
 
     <div class="container checkout">
@@ -75,13 +74,13 @@
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault2" value="Paid" >
+                                    <input disabled class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault2" value="Paid">
                                     <label class="form-check-label" for="flexRadioDefault2">
                                         Online Payment
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault2" value="Paid" >
+                                    <input disabled class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault2" value="Paid">
                                     <label class="form-check-label" for="flexRadioDefault2">
                                         POS On Delivery
                                     </label>
@@ -144,8 +143,8 @@ if (isset($_POST['submit'])) {
 
         if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $cartItemID) {
-            
-                mysqli_query($con,"UPDATE products SET stock_status=stock_status-1 WHERE product_id='$cartItemID'") or die("Error Occured");
+
+                mysqli_query($con, "UPDATE products SET stock_status=stock_status-1 WHERE product_id='$cartItemID'") or die("Error Occured");
                 mysqli_query($con, "INSERT INTO order_details(order_id, product_id, quantity) VALUES ('$order_id', '$cartItemID', 1)") or die("Error Occurred");
             }
         }

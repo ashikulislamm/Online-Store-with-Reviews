@@ -104,6 +104,49 @@
             }
             echo '</div>';
         }
+        //Add to Cart Products
+        if (isset($_POST['addtocart'])) {
+            if (!isset($_SESSION['cart'])) {
+                $_SESSION['cart'] = array();
+            }
+            if ($row["stock_status"] > 0) {
+                if (in_array($productId, $_SESSION['cart'])) {
+                    echo '
+                <script>
+                    swal({
+                        title: "Cannot Add to Cart!",
+                        text: "Product is Already in yout cart",
+                        icon: "warning",
+                        button: "Ok!",
+                    });
+                </script>
+                ';
+                } else {
+                    $_SESSION['cart'][] = $productId;
+                    echo '
+                <script>
+                    swal({
+                        title: "Product Added to Cart!",
+                        text: "View Your Cart to see products!",
+                        icon: "success",
+                        button: "Ok!",
+                    });
+                </script>
+                ';
+                }
+            } else {
+                echo '
+                <script>
+                    swal({
+                        title: "Can not Add to Cart!",
+                        text: "Product is out of stock!",
+                        icon: "error",
+                        button: "Ok!",
+                    });
+                </script>
+                ';
+            }
+        }
         ?>
         <?php
         //Add Products to Wishlist
@@ -155,6 +198,7 @@
                 ';
             }
         }
+
         ?>
         <!-------Review Section---------->
         <div class="title">Reviews</div>
@@ -222,7 +266,7 @@
                         <div class="progress">
                             <?php
                             $percentage = 0;
-                            if($total_review > 0){
+                            if ($total_review > 0) {
                                 $percentage = ($total_four_star_review / $total_review) * 100;
                             }
                             echo '<div class="progress-bar bg-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="five_star_progress" style="width: ' . $percentage . '%;"></div>';
@@ -242,8 +286,7 @@
                         <div class="progress">
                             <?php
                             $percentage = 0;
-                            if($total_review > 0)
-                            {
+                            if ($total_review > 0) {
                                 $percentage = ($total_three_star_review / $total_review) * 100;
                             }
                             echo '<div class="progress-bar bg-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="five_star_progress" style="width: ' . $percentage . '%;"></div>';
@@ -263,8 +306,7 @@
                         <div class="progress">
                             <?php
                             $percentage = 0;
-                            if($total_review > 0)
-                            {
+                            if ($total_review > 0) {
                                 $percentage = ($total_two_star_review / $total_review) * 100;
                             }
                             echo '<div class="progress-bar bg-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="five_star_progress" style="width: ' . $percentage . '%;"></div>';
@@ -284,7 +326,7 @@
                         <div class="progress">
                             <?php
                             $percentage = 0;
-                            if($total_review > 0){
+                            if ($total_review > 0) {
                                 $percentage = ($total_one_star_review / $total_review) * 100;
                             }
                             echo '<div class="progress-bar bg-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="five_star_progress" style="width: ' . $percentage . '%;"></div>';
@@ -299,54 +341,10 @@
                 </div>
             </div>
         </div>
+
     </div>
 
-    <?php
-    //Add to Cart Products
-    if (isset($_POST['addtocart'])) {
-        if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = array();
-        }
-        if ($row["stock_status"] > 0) {
-            if (in_array($productId, $_SESSION['cart'])) {
-                echo '
-                <script>
-                    swal({
-                        title: "Cannot Add to Cart!",
-                        text: "Product is Already in yout cart",
-                        icon: "warning",
-                        button: "Ok!",
-                    });
-                </script>
-                ';
-                //exit();
-            } else {
-                $_SESSION['cart'][] = $productId;
-                echo '
-                <script>
-                    swal({
-                        title: "Product Added to Cart!",
-                        text: "View Your Cart to see products!",
-                        icon: "success",
-                        button: "Ok!",
-                    });
-                </script>
-                ';
-            }
-        } else {
-            echo '
-                <script>
-                    swal({
-                        title: "Can not Add to Cart!",
-                        text: "Product is out of stock!",
-                        icon: "error",
-                        button: "Ok!",
-                    });
-                </script>
-                ';
-        }
-    }
-    ?>
+
 
 
     <!-------Review Content---------->

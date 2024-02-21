@@ -131,11 +131,10 @@ create table review(
     review_id int not null auto_increment primary key,
     product_id int not null,
     foreign key (product_id) references products(product_id),
-    descript varchar(400),
+    user_review varchar(400),
     user_name varchar(100),
     rating int,
     date_time  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-
 );
 
 use online_store_with_review;
