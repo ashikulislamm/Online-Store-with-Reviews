@@ -34,6 +34,6 @@ The "Online Store with Reviews" project aims to design and develop a sophisticat
 
 
 ## Live Demo
-[Visit](https://onlinestorereviews.000webhostapp.com/)
+[Visit]([https://onlinestorereviews.000webhostapp.com/](http://onlinestorewithreviews.great-site.net/?i=1))
 
 
