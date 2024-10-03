@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,9 +19,8 @@
 
 <body>
     <!--Header Section-->
-
     <?php include 'nav.php'; ?>
-    
+
     <?php
     include 'config.php';
     $orderId = isset($_GET['id']) ? $_GET['id'] : null;
@@ -31,7 +31,7 @@
     //$orderDetailrow = $orderDetailssql->fetch_assoc();
     $deliverycharge = 60;
     ?>
-    
+
     <div class="container">
         <!-----------Order Details--------------------->
         <div class="ordertitle">
@@ -77,7 +77,7 @@
                     </tr>
                     <?php
                     if ($orderDetailresult && mysqli_num_rows($orderDetailresult) > 0) {
-                        while ($orderDetailsrow = $orderDetailresult->fetch_assoc() ) {
+                        while ($orderDetailsrow = $orderDetailresult->fetch_assoc()) {
                             $p_id = $orderDetailsrow["product_id"];
                             $product_result = mysqli_query($con, "SELECT * FROM products WHERE product_id='$p_id'");
                             $product_row = mysqli_fetch_assoc($product_result);
@@ -93,14 +93,13 @@
                 </table>
             </div>
         </div>
-
         <!-----------------Order tracking--------------------->
         <?php
         $date = date('Y-m-d', strtotime($orderrow['order_date']));
         $expected_date = date('Y-m-d', strtotime($date . ' + 3 days'));
-         ?>
+        ?>
         <div class=" mb-3">
-            <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking Order </span><span class="text-medium"></span></div>
+            <div class="p-4 text-center text-white text-lg rounded-top tracking-banner"><span class="text-uppercase">Order Status</span><span class="text-medium"></span></div>
             <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2">
                 <div class="w-100 text-center py-1 px-2"><span class="text-medium">Shipped Via:</span> Redex</div>
                 <div class="w-100 text-center py-1 px-2"><span class="text-medium">Status:</span> <?php echo $orderrow['order_status'] ?></div>

@@ -14,12 +14,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
-<!------------------------------------------------------------------------------------------------------->
+
 <body>
   <!------------------Header Section------------------------->
   <?php include 'nav.php'; ?>
   <!---------------------Main Section--------------------------->
-
   <!------------------Slider----------------->
   <div id="carouselExampleIndicators" class="carousel slide carousel-fade">
     <div class="carousel-indicators">
@@ -30,7 +29,7 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="/asset/images/banner/main_banner.png" class="d-block w-100" alt="...">
+        <img src="/asset/images/banner/main_banner.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
         <img src="/asset/images/banner/banner2.jpg" class="d-block w-100" alt="...">
@@ -51,13 +50,13 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-  <!------------------End Slider----------------->
+  <!------------------Slider----------------->
   <main class="container my-1 pb-1">
     <br><br>
     <!-------------Featured catagory--------------->
     <h1 class="title">Featured Categories</h1>
     <div class="row">
-      <div class="col-6 col-md-3">
+      <div class="col-12 col-md-3">
         <div class="category-card">
           <a href="">
             <div class="category-card-img">
@@ -69,7 +68,7 @@
           </a>
         </div>
       </div>
-      <div class="col-6 col-md-3">
+      <div class="col-12 col-md-3">
         <div class="category-card">
           <a href="">
             <div class="category-card-img">
@@ -81,7 +80,7 @@
           </a>
         </div>
       </div>
-      <div class="col-6 col-md-3">
+      <div class="col-12 col-md-3">
         <div class="category-card">
           <a href="">
             <div class="category-card-img">
@@ -93,7 +92,7 @@
           </a>
         </div>
       </div>
-      <div class="col-6 col-md-3">
+      <div class="col-12 col-md-3">
         <div class="category-card">
           <a href="">
             <div class="category-card-img">
@@ -142,56 +141,10 @@
     <div class="seeAllBtn">
       <a href="product.php" class="seeAll">See All Products</a>
     </div>
-    <!------------------Infinite Slider----------------->
-    <h1 class="title">Brand Partners</h1>
-    <div class="wrapper">
-      <div class="slider">
-        <div class="slide-track">
-
-          <!-- Img Code -->
-          <div class="slide">
-            <img src="/asset/images/slider/amazfit.png" />
-          </div>
-
-          <div class="slide">
-            <img src="/asset/images/slider/Fitbit.png" />
-          </div>
-
-          <div class="slide">
-            <img src="/asset/images/slider/kiselect.png" />
-          </div>
-
-          <div class="slide">
-            <img src="/asset/images/slider/kospet.png" />
-          </div>
-
-          <div class="slide">
-            <img src="/asset/images/slider/mibro.png" />
-          </div>
-
-          <div class="slide">
-            <img src="/asset/images/slider/Samsung.png" />
-          </div>
-
-          <div class="slide">
-            <img src="/asset/images/slider/Xiaomi.png" />
-          </div>
-
-          <div class="slide">
-            <img src="/asset/images/slider/zeblaze.png" />
-          </div>
-          <!-- Img Code End -->
-        </div>
-      </div>
-    </div>
-
   </main>
-
   <!-------Footer Section---------->
   <?php include 'footer.php'; ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-
 </body>
 
 </html>

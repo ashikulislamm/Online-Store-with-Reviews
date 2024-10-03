@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,13 +16,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
-
 <body>
     <!--Header Section-->
-
     <?php include 'nav.php'; ?>
-
-
     <div class="container checkout">
         <div class="title">Checkout</div>
         <div class="row checkout_row">
@@ -32,9 +27,7 @@
                     <h4>Items <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i></span></h4>
                     <?php
                     include 'config.php';
-
                     $totalPrice = 0;
-
                     if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
                         foreach ($_SESSION['cart'] as $cartItemID) {
                             $result = mysqli_query($con, "SELECT product_name, price FROM products WHERE product_id='$cartItemID'");
@@ -74,15 +67,9 @@
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input disabled class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault2" value="Paid">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault2" value="Paid">
                                     <label class="form-check-label" for="flexRadioDefault2">
                                         Online Payment
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input disabled class="form-check-input" type="radio" name="paymentMethod" id="flexRadioDefault2" value="Paid">
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                        POS On Delivery
                                     </label>
                                 </div>
                                 <label for="fname" class="login__label">Accepted Cards</label>
@@ -96,20 +83,17 @@
                             </div>
                         </div>
                         <input type="submit" value="Place Order" class="login__button place_order" name="submit">
+                        <input type="submit" value="Pay Now" class="login__button place_order paynow" style="display: none;" name="submit">
                     </form>
 
                 </div>
             </div>
-
         </div>
     </div>
-
     <!-------Footer Section---------->
     <?php include 'footer.php'; ?>
     <script src="/asset/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-
 </body>
 
 </html>
@@ -148,8 +132,6 @@ if (isset($_POST['submit'])) {
                 mysqli_query($con, "INSERT INTO order_details(order_id, product_id, quantity) VALUES ('$order_id', '$cartItemID', 1)") or die("Error Occurred");
             }
         }
-
-
         echo '
          <script>
              swal({
@@ -176,8 +158,6 @@ if (isset($_POST['submit'])) {
          </script>
          ';
     }
-
-
     // echo'<script>window.location="index.php"</script>';
 }
 ?>
